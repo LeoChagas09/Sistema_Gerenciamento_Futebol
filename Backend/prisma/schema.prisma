@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuarios {
+  id_usuario Int     @id @default(autoincrement())
+  nome       String  @db.VarChar(200)
+  email      String  @db.VarChar(200)
+  senha      String  @db.VarChar(100)
+  Times      Times[]
+}
+
+model Tipo_Campeonato {
+  id_tipo    Int          @id @default(autoincrement())
+  nome_tipo  String       @db.VarChar(200)
+  Campeonato Campeonato[]
+}
+
+model Campeonato {
+  id_campeonato    Int             @id @default(autoincrement())
+  tipoCampeonato   Tipo_Campeonato @relation(fields: [id_tipo_fk], references: [id_tipo])
+  id_tipo_fk       Int             @unique
+  id_usuario_fk    Int             @unique
+  nome_campeonato  String          @db.VarChar(200)
+  data_campeonato  DateTime
+  local_campeonato String          @db.VarChar(200)
+  Times            Times[]
+  Jogo             Jogo[]
+}
+
+model Times {
+  id_time        Int              @id @default(autoincrement())
+  id_usuario_fk  Int              @unique
+  usuarios       Usuarios         @relation(fields: [id_usuario_fk], references: [id_usuario])
+  id_campeonato  Int              @unique
+  campeonato     Campeonato       @relation(fields: [id_campeonato], references: [id_campeonato])
+  nome_time      String           @db.VarChar(200)
+  Jogo_time      Jogo_time[]
+  Jogo_Resultado Jogo_Resultado[]
+}
+
+model Jogo {
+  id_jogo          Int              @id @default(autoincrement())
+  id_campeonato_fk Int              @unique
+  campeonato       Campeonato       @relation(fields: [id_campeonato_fk], references: [id_campeonato])
+  data_jogo        DateTime
+  Jogo_Resultado   Jogo_Resultado[]
+}
+
+model Jogo_time {
+  id_jogo_time Int   @id @default(autoincrement())
+  id_time_fk   Int   @unique
+  times        Times @relation(fields: [id_time_fk], references: [id_time])
+}
+
+model Jogo_Resultado {
+  id_jogo_resultado Int      @id @default(autoincrement())
+  id_jogo_fk        Int      @unique
+  jogo              Jogo     @relation(fields: [id_jogo_fk], references: [id_jogo])
+  id_time_fk        Int      @unique
+  times             Times    @relation(fields: [id_time_fk], references: [id_time])
+  data_jogo         DateTime
+}
+
+model Tipo_Feedback {
+  id_tipo_feedback Int        @id @default(autoincrement())
+  tipo_feedback    String     @db.VarChar(200)
+  Feedback         Feedback[]
+}
+
+model Feedback {
+  id_feedback      Int           @id @default(autoincrement())
+  id_tipo_feedback Int           @unique
+  tipo_feedback    Tipo_Feedback @relation(fields: [id_tipo_feedback], references: [id_tipo_feedback])
+  nome             String        @db.VarChar(200)
+  email            String        @db.VarChar(200)
+  mensagem         String        @db.VarChar(500)
+}
