@@ -1,0 +1,15 @@
+.nav-wrapper{
+  background-color: green;
+}
+
+.logo{
+  height: 50px;
+  width: 75px;
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
+.brand-logo{
+  padding-left: 20px;
+}
+
