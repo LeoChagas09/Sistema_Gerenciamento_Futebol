@@ -1,10 +1,9 @@
 .criar-conta {
   display: flex;
   justify-content: center;
-  min-height: 43.8rem;
-  height: 100vh;
+  min-height: 37.8rem;
+  height: 70vh;
   min-width: 80rem;
-  padding: 45px;
   background-image: url(https://i0.wp.com/scienceplay.com.br/wp-content/uploads/2021/09/cafeina-para-jogar-futebol.jpg?fit=1920%2C1122&ssl=1);
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,7 +12,7 @@
 .formulario{
   display: flex;
   flex-direction: column;
-  height: 40rem;
+  height: 35rem;
   width: 50rem;
   justify-content: center;
 }
