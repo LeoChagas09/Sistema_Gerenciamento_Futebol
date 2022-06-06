@@ -1,9 +1,32 @@
-.login {
+@media screen and (min-width: 1280px) {
+  .login{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    height: 38rem;
+    width: 100%;
+    background-image: url(https://i0.wp.com/scienceplay.com.br/wp-content/uploads/2021/09/cafeina-para-jogar-futebol.jpg?fit=1920%2C1122&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .login{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    height: 60rem;
+    width: 100%;
+    background-image: url(https://i0.wp.com/scienceplay.com.br/wp-content/uploads/2021/09/cafeina-para-jogar-futebol.jpg?fit=1920%2C1122&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.login{
   display: flex;
   justify-content: center;
-  min-height: 37.8rem;
-  height: 70vh;
-  min-width: 80rem;
   background-image: url(https://i0.wp.com/scienceplay.com.br/wp-content/uploads/2021/09/cafeina-para-jogar-futebol.jpg?fit=1920%2C1122&ssl=1);
   background-repeat: no-repeat;
   background-size: cover;
