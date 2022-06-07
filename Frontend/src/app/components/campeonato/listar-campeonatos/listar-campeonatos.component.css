@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80rem;
+  color: green;
+  padding-top: 15px;
+}
+
+.titulo {
+  display: flex;
+  padding-left: 20px;
+}
+
+.tabela {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.button {
+  background-color: green;
+}
+
+.mat-elevation-z8 {
+  width: 85rem;
+}

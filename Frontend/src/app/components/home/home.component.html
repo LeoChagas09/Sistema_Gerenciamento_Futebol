@@ -1,0 +1,7 @@
+<ng-container *ngIf="this.logado; else elseTemplate">
+  <app-listar-campeonatos></app-listar-campeonatos>
+</ng-container>
+<ng-template #elseTemplate>
+  <app-login></app-login>
+</ng-template>
+

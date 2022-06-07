@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private _autenticado: boolean = false;
+  autenticado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() { }
+  constructor() {
 
-  get autenticado(){
-    return this._autenticado;
-  }
+   }
 
-  set autenticado(valor: boolean) {
-    this._autenticado = valor;
-  }
 }

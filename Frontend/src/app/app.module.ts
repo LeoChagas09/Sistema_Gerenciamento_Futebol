@@ -7,6 +7,13 @@ import { LoginComponent } from './components/login/login.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ListarCampeonatosComponent } from './components/campeonato/listar-campeonatos/listar-campeonatos.component';
+import { HomeComponent } from './components/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -14,11 +21,17 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     CriarContaComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ListarCampeonatosComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

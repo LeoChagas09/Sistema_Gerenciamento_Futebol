@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   fazerLogin(){
-    this.authService.autenticado = true;
+    this.authService.autenticado.next(true);
   }
 
 }
