@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  width: 80rem;
+  color: green;
+  padding-top: 15px;
+}
+
+.titulo {
+  display: flex;
+  padding-left: 13rem;;
+}
+
+.row {
+  padding-left: 15px;
+}
+
+
+.select {
+  padding-top: 15px;
+  width: 43rem;
+  padding-left: 45px;
+}
+
+.material-icons {
+  color: green;
+}
+
+.button {
+  display: flex;
+  width: 44rem;
+  justify-content: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 10rem;
+  background-color: green;
+  border-radius: 10px;
+}
