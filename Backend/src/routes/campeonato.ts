@@ -35,3 +35,16 @@ CampeonatoRoutes.post('/', async (req, res) => {
     .status(200)
     .json(erroHandling(0, 'Campeonato cadastrado com sucesso'));
 });
+
+CampeonatoRoutes.get('/', async (req, res) => {
+  try {
+    const campeonato = await prisma.campeonato.findMany();
+
+    return res.status(200).json({ campeonato });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(400)
+      .json(erroHandling(1, 'Erro ao buscar o tipo de campeonato'));
+  }
+});
