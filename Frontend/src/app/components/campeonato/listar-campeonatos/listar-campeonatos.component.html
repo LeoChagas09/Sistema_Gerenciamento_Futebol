@@ -10,22 +10,22 @@
 
     <ng-container matColumnDef="Tipo">
       <th mat-header-cell *matHeaderCellDef> Tipo do Campeonato </th>
-      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.tipo_campeonato.nome_tipo }} </td>
     </ng-container>
 
     <ng-container matColumnDef="Nome">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.nome_campeonato}} </td>
     </ng-container>
 
     <ng-container  matColumnDef="Data">
       <th mat-header-cell *matHeaderCellDef> Data do Campeonato </th>
-      <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.data_campeonato}} </td>
     </ng-container>
 
     <ng-container matColumnDef="Local">
       <th mat-header-cell *matHeaderCellDef> Local do Campeonato </th>
-      <td mat-cell *matCellDef="let element"> {{element.local}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.local_campeonato }} </td>
     </ng-container>
 
     <ng-container matColumnDef="botao">

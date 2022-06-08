@@ -1,32 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface PeriodicElement {
-  nome: string;
-  tipo: string;
-  data: string;
-  local: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {tipo: 'Eliminátoria', nome: 'Varzeano 2022', data: '22/10/2022', local: 'Assis' },
-  {tipo: 'Eliminátoria', nome: 'Interclasse', data: '07/10/2022', local: 'Palmital'},
-  {tipo: 'Eliminátoria', nome: 'Copa Fema', data: '27/04/2022', local: 'Assis'},
-];
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Campeonato, ListarCampeonato } from 'src/app/interfaces';
+import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
 
 @Component({
   selector: 'app-listar-campeonatos',
   templateUrl: './listar-campeonatos.component.html',
   styleUrls: ['./listar-campeonatos.component.css']
 })
-export class ListarCampeonatosComponent implements OnInit {
-  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'Local', 'botao'];
-  dataSource = ELEMENT_DATA;
+export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'Local', 'botao'];
+  dataSource: Campeonato[] = [];
+
+  subscriptions: Subscription = new Subscription();
+
+  constructor(public campeonatoService: CampeonatoService) { }
 
   ngOnInit(): void {
+    this.subscriptions.add(
+      this.campeonatoService.getCampeonatos('http://localhost:3333/campeonato/').subscribe({
+      next: retorno => (this.dataSource = retorno.campeonato),
+      error: erro => (console.error(erro)),
+    }))
+  }
 
-
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
 }

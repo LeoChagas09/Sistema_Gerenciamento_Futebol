@@ -38,7 +38,11 @@ CampeonatoRoutes.post('/', async (req, res) => {
 
 CampeonatoRoutes.get('/', async (req, res) => {
   try {
-    const campeonato = await prisma.campeonato.findMany();
+    const campeonato = await prisma.campeonato.findMany({
+      include: {
+        tipo_campeonato: true,
+      },
+    });
 
     return res.status(200).json({ campeonato });
   } catch (error) {
