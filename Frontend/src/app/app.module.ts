@@ -1,6 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { registerLocaleData } from '@angular/common';
 
@@ -19,9 +20,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ListarCampeonatosComponent } from './components/campeonato/listar-campeonatos/listar-campeonatos.component';
 import { HomeComponent } from './components/home/home.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
-import { CommonModule } from '@angular/common';
+import { CriarCampeonatosComponent } from './components/campeonato/criar-campeonatos/criar-campeonatos.component';
+import { EditarCampeonatosComponent } from './components/campeonato/editar-campeonatos/editar-campeonatos.component';
 
 import localePT from '@angular/common/locales/pt';
+
+
 registerLocaleData(localePT);
 
 @NgModule({
@@ -33,7 +37,9 @@ registerLocaleData(localePT);
     FooterComponent,
     ListarCampeonatosComponent,
     HomeComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    CriarCampeonatosComponent,
+    EditarCampeonatosComponent
   ],
   imports: [
     BrowserModule,

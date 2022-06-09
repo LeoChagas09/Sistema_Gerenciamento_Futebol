@@ -19,16 +19,12 @@
 
 .select {
   padding-top: 15px;
-  width: 43rem;
-  padding-left: 45px;
+  width: 45rem;
+  padding-left: 15px;
 }
 
 .input-field {
   width: 45rem;
-}
-
-.material-icons {
-  color: green;
 }
 
 .button {
@@ -41,7 +37,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 10rem;
+  width: 13rem;
   background-color: green;
   border-radius: 10px;
 }
