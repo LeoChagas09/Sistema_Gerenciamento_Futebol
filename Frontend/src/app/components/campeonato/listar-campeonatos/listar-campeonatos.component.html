@@ -20,7 +20,7 @@
 
     <ng-container  matColumnDef="Data">
       <th mat-header-cell *matHeaderCellDef> Data do Campeonato </th>
-      <td mat-cell *matCellDef="let element"> {{element.data_campeonato}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.data_campeonato | date: "dd/MMMM/yyyy" :"":"pt-BR" }} </td>
     </ng-container>
 
     <ng-container matColumnDef="Local">

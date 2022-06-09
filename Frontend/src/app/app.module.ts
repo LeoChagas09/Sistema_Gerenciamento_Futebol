@@ -1,6 +1,8 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+
+import { registerLocaleData } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
@@ -17,7 +19,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ListarCampeonatosComponent } from './components/campeonato/listar-campeonatos/listar-campeonatos.component';
 import { HomeComponent } from './components/home/home.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { CommonModule } from '@angular/common';
 
+import localePT from '@angular/common/locales/pt';
+registerLocaleData(localePT);
 
 @NgModule({
   declarations: [
@@ -32,6 +37,7 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -40,7 +46,9 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     MatIconModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-br'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
