@@ -16,6 +16,9 @@ FeedbackRoutes.post('/', async (req, res) => {
         email,
         mensagem,
       },
+      include: {
+        tipo_feedback: true,
+      },
     });
   } catch (error) {
     console.log(error);

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FeedbackService } from 'src/app/services/feedback/feedback.service';
+import { Feedback, Feedbacks } from 'src/app/interfaces';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-feedback',
@@ -7,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit {
 
-  constructor() { }
+
+  subscriptions: Subscription = new Subscription();
+
+  constructor(public feedbackService: FeedbackService) { }
 
   ngOnInit(): void {
   }

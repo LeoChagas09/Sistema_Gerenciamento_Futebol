@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { Campeonato, ListarCampeonato } from 'src/app/interfaces';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
+import { CriarCampeonatosComponent } from '../criar-campeonatos/criar-campeonatos.component';
 
 @Component({
   selector: 'app-listar-campeonatos',
@@ -15,7 +17,10 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription = new Subscription();
 
-  constructor(public campeonatoService: CampeonatoService) { }
+  constructor(
+    public campeonatoService: CampeonatoService,
+    public dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.subscriptions.add(
@@ -27,6 +32,12 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  openDialog(): void {
+    this.dialog.open(CriarCampeonatosComponent, {
+      width: '600px',
+    });
   }
 
 }

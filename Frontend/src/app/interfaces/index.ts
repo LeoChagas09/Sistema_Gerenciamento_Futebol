@@ -16,3 +16,20 @@ export interface TipoCampeonato {
 export interface ListarCampeonato {
   campeonato: Campeonato[];
 }
+
+export interface Feedback  {
+  id_tipo_feedback: number,
+  nome: string,
+  email: string,
+  mensagem: string,
+  tipo_feedback: tipoFeedback,
+}
+
+export interface tipoFeedback {
+  id_tipo_feedback: number,
+  tipo_feedback: string
+}
+
+export interface Feedbacks {
+  feedback: Feedback[];
+}
