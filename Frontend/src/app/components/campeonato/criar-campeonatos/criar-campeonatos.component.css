@@ -3,34 +3,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80rem;
   color: green;
-  padding-top: 15px;
 }
 
 .titulo {
   display: flex;
 }
 
-.row {
-  padding-left: 15px;
+.select {
+  width: 35rem;
 }
 
-
-.select {
-  padding-top: 15px;
-  width: 45rem;
-  padding-left: 15px;
+.row {
+  display: flex;
+  flex-direction: column;
 }
 
 .input-field {
-  width: 45rem;
+  width: 35rem;
 }
 
 .button {
   display: flex;
-  width: 44rem;
   justify-content: center;
+  width: 100%;
 }
 
 .btn {

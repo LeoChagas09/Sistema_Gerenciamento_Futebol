@@ -1,8 +1,10 @@
 <div class="container">
-  <h4 class="titulo"> Campeonatos </h4>
-  <button class="button" mat-fab color="warn" (click)="this.openDialog()">
-    <mat-icon>add</mat-icon>
-  </button>
+  <div class="header">
+    <h4 class="titulo"> Campeonatos </h4>
+    <button class="button" mat-fab color="warn" (click)="this.openDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>
 
 <div class="tabela">
@@ -31,7 +33,7 @@
     <ng-container matColumnDef="botao">
       <th  mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef>
-        <button class="button" mat-mini-fab color="warn">
+        <button class="button" mat-mini-fab color="warn" routerLink="/editar">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
@@ -43,4 +45,6 @@
   </table>
 
 </div>
+
+
 

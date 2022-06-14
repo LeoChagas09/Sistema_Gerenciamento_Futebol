@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Campeonato, ListarCampeonato } from 'src/app/interfaces';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
@@ -19,7 +20,8 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
   constructor(
     public campeonatoService: CampeonatoService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -36,8 +38,13 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
   openDialog(): void {
     this.dialog.open(CriarCampeonatosComponent, {
-      width: '600px',
+      width: '800px',
+      height: '500px'
     });
+  }
+
+  editar(){
+    this.router.navigate(['/editar']);
   }
 
 }

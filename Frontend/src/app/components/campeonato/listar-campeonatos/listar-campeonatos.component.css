@@ -1,15 +1,14 @@
 .container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 80rem;
+  flex-direction: column;
   color: green;
   padding-top: 15px;
 }
 
-.titulo {
+.header {
   display: flex;
-  padding-left: 20px;
+  justify-content: space-between;
+
 }
 
 .tabela {
