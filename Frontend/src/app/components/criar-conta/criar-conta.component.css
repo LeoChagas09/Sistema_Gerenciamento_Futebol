@@ -2,8 +2,7 @@
   .criar-conta{
     display: flex;
     justify-content: center;
-    width: 91.0rem;
-    height: 38rem;
+    width: 100%;
     background-image: url(https://i0.wp.com/scienceplay.com.br/wp-content/uploads/2021/09/cafeina-para-jogar-futebol.jpg?fit=1920%2C1122&ssl=1);
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,8 +14,8 @@
     display: flex;
     justify-content: center;
     margin: 0;
-    height: 60rem;
-    width: 128rem;
+    height: 51.5rem;
+    width: 100%;
     background-image: url(https://i0.wp.com/scienceplay.com.br/wp-content/uploads/2021/09/cafeina-para-jogar-futebol.jpg?fit=1920%2C1122&ssl=1);
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,8 +34,9 @@
 .formulario{
   display: flex;
   flex-direction: column;
-  height: 35rem;
+  height: 30.7rem;
   width: 50rem;
+  margin: 0;
   justify-content: center;
 }
 

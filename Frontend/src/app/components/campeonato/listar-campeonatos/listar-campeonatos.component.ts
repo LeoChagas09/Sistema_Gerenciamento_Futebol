@@ -38,8 +38,7 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
   openDialog(): void {
     this.dialog.open(CriarCampeonatosComponent, {
-      width: '800px',
-      height: '500px'
+      width: '600px',
     });
   }
 

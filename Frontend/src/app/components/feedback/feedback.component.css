@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   color: green;
-  padding-top: 15px;
 }
 
 .titulo {
@@ -14,34 +13,29 @@
 .row {
   display: flex;
   flex-direction: column;
-}
-
-.select {
-  padding-top: 15px;
-  width: 43rem;
-  padding-left: 45px;
-}
-
-
-.input-field {
-  width: 45rem;
+  width: 85%;
 }
 
 .material-icons {
-  color: green;
+  display: flex;
+  padding-top: 10px;
 }
 
 .button {
   display: flex;
-  width: 44rem;
   justify-content: center;
+  width: 100%;
 }
 
 .btn {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 10rem;
+  width: 13rem;
   background-color: green;
   border-radius: 10px;
+  margin-bottom: 5rem;
+}
+
+@media screen and (min-width: 1920px) {
+  .btn {
+    margin-bottom: 19.3rem;
+  }
 }

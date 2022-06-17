@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   color: green;
+  width: 100%;
 }
 
 .titulo {
@@ -11,7 +12,7 @@
 }
 
 .select {
-  width: 35rem;
+  width: 100%;
 }
 
 .row {
@@ -19,9 +20,6 @@
   flex-direction: column;
 }
 
-.input-field {
-  width: 35rem;
-}
 
 .button {
   display: flex;

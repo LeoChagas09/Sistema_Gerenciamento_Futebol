@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(
+    public authService: AuthService,
+    public router: Router
+    ) { }
 
   ngOnInit(): void {
 
@@ -16,6 +20,11 @@ export class LoginComponent implements OnInit {
 
   fazerLogin(){
     this.authService.autenticado.next(true);
+    this.router.navigate(['/campeonatos']);
+  }
+
+  criarConta(){
+    this.router.navigate(['/cadastro']);
   }
 
 }

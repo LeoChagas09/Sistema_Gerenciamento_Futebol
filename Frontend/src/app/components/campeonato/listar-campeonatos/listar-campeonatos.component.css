@@ -15,6 +15,8 @@
   display: flex;
   justify-content: center;
   padding-top: 20px;
+  width: 100%;
+  margin-bottom: 6.89rem;
 }
 
 .button {
@@ -22,5 +24,33 @@
 }
 
 .mat-elevation-z8 {
-  width: 85rem;
+  width: 83rem;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media(max-width: 600px) {
+  .mobile-label {
+    display: flex;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-cell {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 24px;
+  }
+
+}
+
+@media screen and (min-width: 1920px) {
+  .tabela {
+    margin-bottom: 27.69rem;
+  }
 }
