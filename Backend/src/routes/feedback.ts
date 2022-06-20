@@ -1,15 +1,25 @@
 import { Prisma } from '@prisma/client';
 import { Router } from 'express';
+import nodemailer from 'nodemailer';
 import { erroHandling } from '../model/Errorhandling';
 import { prisma } from '../prisma';
 
 export const FeedbackRoutes = Router();
 
+const transport = nodemailer.createTransport({
+  host: 'smtp.mailtrap.io',
+  port: 2525,
+  auth: {
+    user: '9484eb2ffba923',
+    pass: 'd178873ede06dc',
+  },
+});
+
 FeedbackRoutes.post('/', async (req, res) => {
   const { id_tipo_feedback, nome, email, mensagem } = req.body;
 
   try {
-    const feedback = await prisma.feedback.create<Prisma.feedbackCreateArgs>({
+    const feedback = await prisma.feedback.create({
       data: {
         id_tipo_feedback,
         nome,
@@ -19,6 +29,17 @@ FeedbackRoutes.post('/', async (req, res) => {
       include: {
         tipo_feedback: true,
       },
+    });
+
+    await transport.sendMail({
+      from: `${nome} <${email}>`,
+      to: ' QFute <QFute@contato.com>',
+      subject: 'Novo Feedback',
+      html: [
+        `<div style= "font-family: sans-serif; font-size: 16px; color:#111;">`,
+        `<p> Tipo de feedback: ${feedback.tipo_feedback?.tipo_feedback}</p>`,
+        `<p> Comentário: ${mensagem}</p>`,
+      ].join('\n'),
     });
   } catch (error) {
     console.log(error);
