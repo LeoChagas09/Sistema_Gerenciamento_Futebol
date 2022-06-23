@@ -2,7 +2,6 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { registerLocaleData } from '@angular/common';
 
@@ -63,7 +62,6 @@ registerLocaleData(localePT);
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    ModalModule.forRoot()
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br'},

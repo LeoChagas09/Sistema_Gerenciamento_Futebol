@@ -4,8 +4,6 @@ import { FeedbackService } from 'src/app/services/feedback/feedback.service';
 import { Feedback, tipoFeedback } from 'src/app/interfaces';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TipoFeedbackService } from 'src/app/services/feedback/tipo-feedback.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-feedback',
@@ -14,7 +12,6 @@ import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.comp
 })
 export class FeedbackComponent implements OnInit {
 
-  bsModalRef!: BsModalRef;
 
   form_feed = new FormGroup({
     tipo_feedback: new FormControl('', [Validators.required]),
@@ -31,7 +28,6 @@ export class FeedbackComponent implements OnInit {
     public feedbackService: FeedbackService,
     public tipoFeedbackService: TipoFeedbackService,
     private fb: FormBuilder,
-    private modalService: BsModalService
     ) { }
 
 
@@ -59,18 +55,10 @@ export class FeedbackComponent implements OnInit {
 
     this.form_feed.reset(feed);
 
-    this.handleSucess();
-
   }
 
   get f() {
     return this.form_feed.controls;
-  }
-
-  handleSucess(){
-    this.bsModalRef = this.modalService.show(AlertModalComponent);
-    this.bsModalRef.content.type = 'success';
-    this.bsModalRef.content.message = 'Feedback enviado com Sucesso';
   }
 
 }
