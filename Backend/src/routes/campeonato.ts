@@ -44,7 +44,7 @@ CampeonatoRoutes.get('/', async (req, res) => {
       },
     });
 
-    return res.status(200).json({ campeonato });
+    return res.status(200).json(campeonato);
   } catch (error) {
     console.log(error);
     return res

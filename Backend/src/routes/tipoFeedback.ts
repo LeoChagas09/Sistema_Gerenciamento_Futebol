@@ -8,7 +8,7 @@ tipoFeedbackRoutes.get('/', async (req, res) => {
   try {
     const tipoFeedback = await prisma.tipo_feedback.findMany();
 
-    return res.status(200).json({ tipoFeedback });
+    return res.status(200).json(tipoFeedback);
   } catch (error) {
     console.log(error);
     return res

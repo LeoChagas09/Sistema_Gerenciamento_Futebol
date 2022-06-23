@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Campeonato, ListarCampeonato } from 'src/app/interfaces';
+import { Campeonato } from 'src/app/interfaces';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
 import { CriarCampeonatosComponent } from '../criar-campeonatos/criar-campeonatos.component';
 
@@ -27,7 +27,7 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.add(
       this.campeonatoService.getCampeonatos('http://localhost:3333/campeonato/').subscribe({
-      next: retorno => (this.dataSource = retorno.campeonato),
+      next: retorno => (this.dataSource = retorno),
       error: erro => (console.error(erro)),
     }))
   }

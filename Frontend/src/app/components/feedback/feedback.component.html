@@ -2,35 +2,44 @@
   <div class="container">
     <h4> Feedback </h4>
 
-    <div class="row">
-      <mat-form-field class="select" appearance="outline">
-        <mat-label>Selecione o Feedback</mat-label>
-        <mat-select>
-          <mat-option value="sugestao">Sugestão</mat-option>
-          <mat-option value="reportar">Reportar Problema</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <form [formGroup]="this.form_feed" class="row" >
+      <div class="row">
+        <mat-form-field  class="select" appearance="outline">
+          <mat-label>Selecione o Feedback</mat-label>
+          <mat-select name="tipo_feedback" formControlName="tipo_feedback" >
+            <mat-option *ngFor="let feed of this.tiposFeedbacks" [value]="feed.id_tipo_feedback">
+               {{ feed.tipo_feedback }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <div appearance="fill">
-        <i class="material-icons prefix">person</i>
-        <input placeholder="Nome" type="text" class="validate">
-      </div>
+        <div appearance="fill">
+          <i class="material-icons prefix">person</i>
+          <input name="nome" formControlName="nome" placeholder="Nome" type="text" class="validate">
+          <mat-error></mat-error>
+          <mat-error></mat-error>
+        </div>
 
-      <div appearance="fill">
-        <i class="material-icons prefix">email</i>
-        <input placeholder="Email" type="email" class="validate">
-      </div>
+        <div appearance="fill">
+          <i class="material-icons prefix">email</i>
+          <input name="email" formControlName="email" placeholder="Email" type="email" class="validate">
+          <mat-error></mat-error>
+          <mat-error></mat-error>
+        </div>
 
         <div appearance="fill">
           <i class="material-icons prefix">message</i>
-          <textarea placeholder="Mensagem" id="icon_prefix2" class="materialize-textarea"></textarea>
+          <textarea name="mensagem" formControlName="mensagem" placeholder="Mensagem" id="icon_prefix2" class="materialize-textarea"></textarea>
+          <mat-error></mat-error>
+          <mat-error></mat-error>
         </div>
 
-    </div>
+      </div>
+    </form>
   </div>
 
   <div class="button">
-    <a class="waves-effect waves-light btn">Enviar</a>
+    <button class="waves-effect waves-light btn" [disabled]="this.form_feed.invalid" (click)="this.enviaFeedback()">Enviar</button>
   </div>
 </div>
 

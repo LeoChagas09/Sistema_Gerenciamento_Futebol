@@ -8,7 +8,7 @@ tipoCampeonatoRoutes.get('/', async (req, res) => {
   try {
     const tipoCampeonato = await prisma.tipo_campeonato.findMany();
 
-    return res.status(200).json({ tipoCampeonato });
+    return res.status(200).json(tipoCampeonato);
   } catch (error) {
     console.log(error);
     return res

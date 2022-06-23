@@ -21,12 +21,12 @@ model campeonato {
 }
 
 model feedback {
-  id_feedback      Int            @id(map: "id_feedback_pk") @default(autoincrement())
-  id_tipo_feedback Int?
-  nome             String?        @db.VarChar(200)
-  email            String?        @db.VarChar(200)
-  mensagem         String?        @db.VarChar(500)
-  tipo_feedback    tipo_feedback? @relation(fields: [id_tipo_feedback], references: [id_tipo_feedback], onDelete: NoAction, onUpdate: NoAction, map: "id_tipo_feedback_fk")
+  id_feedback         Int            @id(map: "id_feedback_pk") @default(autoincrement())
+  id_tipo_feedback_fk Int?
+  nome                String?        @db.VarChar(200)
+  email               String?        @db.VarChar(200)
+  mensagem            String?        @db.VarChar(500)
+  tipo_feedback       tipo_feedback? @relation(fields: [id_tipo_feedback_fk], references: [id_tipo_feedback], onDelete: NoAction, onUpdate: NoAction, map: "id_tipo_feedback_fk")
 }
 
 model jogo {

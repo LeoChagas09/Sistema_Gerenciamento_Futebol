@@ -16,18 +16,21 @@ const transport = nodemailer.createTransport({
 });
 
 FeedbackRoutes.post('/', async (req, res) => {
-  const { id_tipo_feedback, nome, email, mensagem } = req.body;
+  const { id_tipo_feedback_fk, nome, email, mensagem } = req.body;
 
   try {
+    const tipo = await prisma.tipo_feedback.findFirst({
+      where: {
+        id_tipo_feedback: id_tipo_feedback_fk,
+      },
+    });
+
     const feedback = await prisma.feedback.create({
       data: {
-        id_tipo_feedback,
+        id_tipo_feedback_fk,
         nome,
         email,
         mensagem,
-      },
-      include: {
-        tipo_feedback: true,
       },
     });
 
@@ -37,7 +40,7 @@ FeedbackRoutes.post('/', async (req, res) => {
       subject: 'Novo Feedback',
       html: [
         `<div style= "font-family: sans-serif; font-size: 16px; color:#111;">`,
-        `<p> Tipo de feedback: ${feedback.tipo_feedback?.tipo_feedback}</p>`,
+        `<p> Tipo de feedback: ${tipo?.tipo_feedback}</p>`,
         `<p> Comentário: ${mensagem}</p>`,
       ].join('\n'),
     });

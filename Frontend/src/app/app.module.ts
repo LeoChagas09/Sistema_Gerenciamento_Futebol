@@ -2,6 +2,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { registerLocaleData } from '@angular/common';
 
@@ -13,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +30,7 @@ import { CriarCampeonatosComponent } from './components/campeonato/criar-campeon
 import { EditarCampeonatosComponent } from './components/campeonato/editar-campeonatos/editar-campeonatos.component';
 
 import localePT from '@angular/common/locales/pt';
+
 
 
 registerLocaleData(localePT);
@@ -50,6 +53,8 @@ registerLocaleData(localePT);
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonModule,
@@ -57,7 +62,8 @@ registerLocaleData(localePT);
     MatSelectModule,
     MatDialogModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ModalModule.forRoot()
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br'},

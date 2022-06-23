@@ -13,16 +13,13 @@ export interface TipoCampeonato {
   nome_tipo: string,
 }
 
-export interface ListarCampeonato {
-  campeonato: Campeonato[];
-}
-
 export interface Feedback  {
-  id_tipo_feedback: number,
+  id_feedback: number;
+  id_tipo_feedback_fk: number,
   nome: string,
   email: string,
   mensagem: string,
-  tipo_feedback: tipoFeedback,
+  // tipo_feedback: tipoFeedback,
 }
 
 export interface tipoFeedback {
