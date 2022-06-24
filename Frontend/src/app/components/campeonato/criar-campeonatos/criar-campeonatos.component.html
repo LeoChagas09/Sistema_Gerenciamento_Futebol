@@ -2,34 +2,37 @@
   <div class="container">
     <h4 mat-dialog-title> Novo Campeonato </h4>
 
-    <div class="row">
-      <mat-form-field class="select" appearance="outline">
-        <mat-label>Tipo de Torneio</mat-label>
-        <mat-select>
-          <mat-option value="eliminatoria">Eliminatória</mat-option>
-          <mat-option value="pontos">Pontos Corridos</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <div appearance="fill">
-        <label>Nome do Campeonato</label>
-        <input placeholder="Nome do Campeonato" type="text" class="validate">
-      </div>
-
-      <div appearance="fill">
-        <label>Data do Campeonato</label>
-        <input placeholder="Data do Campeonato" type="date" class="validate">
-      </div>
+    <form [formGroup]="this.form_campeonato" class="row" >
+      <div class="row">
+        <mat-form-field class="select" appearance="outline">
+          <mat-label>Tipo de Torneio</mat-label>
+          <mat-select name="tipo_campeonato" formControlName="tipo_campeonato" >
+            <mat-option *ngFor="let campe of this.tiposCampeonatos" [value]="campe.id_tipo">
+               {{ campe.nome_tipo }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <div appearance="fill">
-          <label>Local do Campeonato</label>
-          <input placeholder="Local do Campeonato" type="text" class="validate">
+          <label>Nome do Campeonato</label>
+          <input name="nome" formControlName="nome" placeholder="Nome do Campeonato" type="text" class="validate">
         </div>
 
-    </div>
+        <div appearance="fill">
+          <label>Data do Campeonato</label>
+          <input name="data" formControlName="data" placeholder="Data do Campeonato" type="date" class="validate">
+        </div>
+
+          <div appearance="fill">
+            <label>Local do Campeonato</label>
+            <input name="local" formControlName="local" placeholder="Local do Campeonato" type="text" class="validate">
+          </div>
+
+      </div>
+    </form>
   </div>
 </div>
 
 <div mat-dialog-actions class="button">
-    <a class="waves-effect waves-light btn">Criar Campeonato</a>
+    <button class="waves-effect waves-light btn" [disabled]="this.form_campeonato.invalid" (click)="this.criarCampeonato()">Criar Campeonato</button>
 </div>

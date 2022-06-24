@@ -57,7 +57,7 @@ export class FeedbackComponent implements OnInit {
 
     this.form_feed.reset(this.setFormFeedback(feed));
 
-    this.toast.success({detail: 'Feedback enviado com Sucesso!', summary: 'Seu Feedback foi encaminhado para nossa equipe e iremos avaliar!', duration: 8000})
+    this.toast.success({detail: 'Feedback enviado com Sucesso!', summary: 'Seu Feedback foi encaminhado para nossa equipe e iremos avaliar!', duration: 8000});
 
   }
 

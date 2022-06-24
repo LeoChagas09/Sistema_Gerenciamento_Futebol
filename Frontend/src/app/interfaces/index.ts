@@ -5,7 +5,7 @@ export interface Campeonato {
   nome_campeonato: string,
   data_campeonato: string,
   local_campeonato: string,
-  tipo_campeonato: TipoCampeonato
+  //tipo_campeonato: TipoCampeonato
 }
 
 export interface TipoCampeonato {
@@ -29,4 +29,8 @@ export interface tipoFeedback {
 
 export interface Feedbacks {
   feedback: Feedback[];
+}
+
+export interface Campeonatos {
+  campeonatos: Campeonato[];
 }

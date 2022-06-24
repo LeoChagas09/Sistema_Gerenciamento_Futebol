@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Campeonato } from 'src/app/interfaces';
+import { Campeonato, Campeonatos } from 'src/app/interfaces';
 
 
 @Injectable({
@@ -15,4 +15,7 @@ export class CampeonatoService {
     return this.http.get<Campeonato[]>(url)
   }
 
+  postCampeonatos(url: string, campeonato: Campeonato): Observable<Campeonatos> {
+    return this.http.post<Campeonatos>(url, campeonato);
+  }
 }
