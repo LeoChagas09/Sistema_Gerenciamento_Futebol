@@ -2,6 +2,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { NgToastModule } from 'ng-angular-popup';
 
 import { registerLocaleData } from '@angular/common';
 
@@ -62,6 +63,7 @@ registerLocaleData(localePT);
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    NgToastModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br'},

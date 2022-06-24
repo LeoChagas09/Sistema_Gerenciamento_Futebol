@@ -4,6 +4,7 @@ import { FeedbackService } from 'src/app/services/feedback/feedback.service';
 import { Feedback, tipoFeedback } from 'src/app/interfaces';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TipoFeedbackService } from 'src/app/services/feedback/tipo-feedback.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-feedback',
@@ -28,6 +29,7 @@ export class FeedbackComponent implements OnInit {
     public feedbackService: FeedbackService,
     public tipoFeedbackService: TipoFeedbackService,
     private fb: FormBuilder,
+    private toast: NgToastService
     ) { }
 
 
@@ -53,12 +55,22 @@ export class FeedbackComponent implements OnInit {
 
     this.feedbackService.postFeedback('http://localhost:3333/feedback/', feed).subscribe(feed => {feed.feedback})
 
-    this.form_feed.reset(feed);
+    this.form_feed.reset(this.setFormFeedback(feed));
+
+    this.toast.success({detail: 'Feedback enviado com Sucesso!', summary: 'Seu Feedback foi encaminhado para nossa equipe e iremos avaliar!', duration: 8000})
 
   }
 
   get f() {
     return this.form_feed.controls;
+  }
+
+  setFormFeedback(feedback : Feedback) {
+    if(typeof feedback === 'undefined') return;
+    this.f['tipo_feedback'].setValue(feedback.id_tipo_feedback_fk);
+    this.f['nome'].setValue(feedback.nome);
+    this.f['email'].setValue(feedback.email);
+    this.f['mensagem'].setValue(feedback.mensagem);
   }
 
 }
