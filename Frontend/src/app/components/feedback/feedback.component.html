@@ -8,7 +8,7 @@
           <mat-label>Selecione o Feedback</mat-label>
           <mat-select name="tipo_feedback" formControlName="tipo_feedback" >
             <mat-option *ngFor="let feed of this.tiposFeedbacks" [value]="feed.id_tipo_feedback">
-               {{ feed.tipo_feedback }}
+               {{ feed.descricao }}
             </mat-option>
           </mat-select>
         </mat-form-field>

@@ -13,7 +13,7 @@ import { CriarCampeonatosComponent } from '../criar-campeonatos/criar-campeonato
 })
 export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
-  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'Local', 'botao'];
+  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'Local', 'jogo', 'botao'];
   dataSource: Campeonato[] = [];
 
   subscriptions: Subscription = new Subscription();
@@ -26,7 +26,7 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.campeonatoService.getCampeonatos('http://localhost:3333/campeonato/').subscribe({
+      this.campeonatoService.getCampeonatos().subscribe({
       next: retorno => (this.dataSource = retorno),
       error: erro => (console.error(erro)),
     }))

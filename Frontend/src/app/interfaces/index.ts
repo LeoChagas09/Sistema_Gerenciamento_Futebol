@@ -24,7 +24,7 @@ export interface Feedback  {
 
 export interface tipoFeedback {
   id_tipo_feedback: number,
-  tipo_feedback: string
+  descricao: string
 }
 
 export interface Feedbacks {
@@ -33,4 +33,15 @@ export interface Feedbacks {
 
 export interface Campeonatos {
   campeonatos: Campeonato[];
+}
+
+export interface novaConta {
+  id_usuario: number;
+  nome: string;
+  email: string;
+  senha: string;
+}
+
+export interface ContaNova {
+  usuario: novaConta[];
 }

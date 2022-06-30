@@ -8,9 +8,12 @@ import { TipoCampeonato } from 'src/app/interfaces';
 })
 export class TipoCampeonatoService {
 
+  baseUrl: string = 'http://localhost:3333/';
+
   constructor(private http: HttpClient) { }
 
-  getTipoCampeonato(url: string):Observable<TipoCampeonato[]>{
+  getTipoCampeonato():Observable<TipoCampeonato[]>{
+    const url = `${this.baseUrl}tipoCampeonato/`;
     return this.http.get<TipoCampeonato[]>(url)
   }
 }

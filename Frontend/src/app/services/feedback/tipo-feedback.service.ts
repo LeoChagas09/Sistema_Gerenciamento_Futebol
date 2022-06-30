@@ -8,9 +8,12 @@ import { tipoFeedback } from 'src/app/interfaces';
 })
 export class TipoFeedbackService {
 
+  baseUrl: string = 'http://localhost:3333/';
+
   constructor(private http: HttpClient) { }
 
-  getTipoFeedback(url: string):Observable<tipoFeedback[]>{
+  getTipoFeedback():Observable<tipoFeedback[]>{
+    const url = `${this.baseUrl}tipoFeedback/`
     return this.http.get<tipoFeedback[]>(url)
   }
 }

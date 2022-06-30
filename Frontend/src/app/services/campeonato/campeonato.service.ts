@@ -9,13 +9,17 @@ import { Campeonato, Campeonatos } from 'src/app/interfaces';
 })
 export class CampeonatoService {
 
+  baseUrl: string = 'http://localhost:3333/';
+
   constructor(private http: HttpClient) { }
 
-  getCampeonatos(url: string):Observable<Campeonato[]>{
+  getCampeonatos():Observable<Campeonato[]>{
+    const url = `${this.baseUrl}campeonato/`
     return this.http.get<Campeonato[]>(url)
   }
 
-  postCampeonatos(url: string, campeonato: Campeonato): Observable<Campeonatos> {
+  postCampeonatos(campeonato: Campeonato): Observable<Campeonatos> {
+    const url = `${this.baseUrl}campeonato/cadastrar`
     return this.http.post<Campeonatos>(url, campeonato);
   }
 }

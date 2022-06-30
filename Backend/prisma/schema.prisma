@@ -21,12 +21,12 @@ model campeonato {
 }
 
 model feedback {
-  id_feedback         Int            @id(map: "id_feedback_pk") @default(autoincrement())
-  id_tipo_feedback_fk Int?
-  nome                String?        @db.VarChar(200)
-  email               String?        @db.VarChar(200)
-  mensagem            String?        @db.VarChar(500)
-  tipo_feedback       tipo_feedback? @relation(fields: [id_tipo_feedback_fk], references: [id_tipo_feedback], onDelete: NoAction, onUpdate: NoAction, map: "id_tipo_feedback_fk")
+  id_feedback         Int           @id(map: "id_feedback_pk") @default(autoincrement())
+  id_tipo_feedback_fk Int
+  nome                String       @db.VarChar(200)
+  email               String      @db.VarChar(200)
+  mensagem            String      @db.VarChar(500)
+  tipo_feedback       tipo_feedback @relation(fields: [id_tipo_feedback_fk], references: [id_tipo_feedback], onDelete: NoAction, onUpdate: NoAction, map: "id_tipo_feedback_fk")
 }
 
 model jogo {
@@ -70,15 +70,15 @@ model tipo_campeonato {
 
 model tipo_feedback {
   id_tipo_feedback Int        @id @default(autoincrement())
-  tipo_feedback    String?    @db.VarChar(200)
+  descricao        String     @db.VarChar(200)
   feedback         feedback[]
 }
 
 model usuarios {
   id_usuario Int          @id @default(autoincrement())
-  nome       String?      @db.VarChar(200)
-  email      String?      @db.VarChar(200)
-  senha      String?      @db.VarChar(100)
+  nome       String       @db.VarChar(200)
+  email      String       @db.VarChar(200)
+  senha      String       @db.VarChar(100)
   campeonato campeonato[]
   times      times[]
 }

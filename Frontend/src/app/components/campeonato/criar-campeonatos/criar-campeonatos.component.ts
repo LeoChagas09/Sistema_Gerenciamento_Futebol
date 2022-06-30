@@ -35,7 +35,7 @@ export class CriarCampeonatosComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.tipoCampeonatoService.getTipoCampeonato('http://localhost:3333/tipoCampeonato/').subscribe({
+      this.tipoCampeonatoService.getTipoCampeonato().subscribe({
       next: retorno => (this.tiposCampeonatos = retorno),
       error: erro => (console.error(erro)),
     }));
@@ -55,7 +55,7 @@ export class CriarCampeonatosComponent implements OnInit {
 
     console.log(campeo);
 
-    this.campeonatoService.postCampeonatos('http://localhost:3333/campeonato/', campeo).subscribe(campeo => {campeo.campeonatos});
+    this.campeonatoService.postCampeonatos(campeo).subscribe(campeo => {campeo.campeonatos});
 
     this.form_campeonato.reset(this.setFormCampeonato(campeo));
 

@@ -8,9 +8,12 @@ import { Feedback, Feedbacks } from 'src/app/interfaces';
 })
 export class FeedbackService {
 
+  baseUrl: string = 'http://localhost:3333/';
+
   constructor(private http: HttpClient) { }
 
-  postFeedback(url: string, feedback: Feedback): Observable<Feedbacks> {
+  postFeedback(feedback: Feedback): Observable<Feedbacks> {
+    const url = `${this.baseUrl}feedback/`
     return this.http.post<Feedbacks>(url, feedback);
   }
 }

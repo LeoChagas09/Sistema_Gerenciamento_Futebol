@@ -5,7 +5,7 @@ import { prisma } from '../prisma';
 
 export const CampeonatoRoutes = Router();
 
-CampeonatoRoutes.post('/', async (req, res) => {
+CampeonatoRoutes.post('/cadastrar', async (req, res) => {
   const {
     id_tipo_fk,
     id_usuario_fk,
@@ -41,6 +41,7 @@ CampeonatoRoutes.get('/', async (req, res) => {
     const campeonato = await prisma.campeonato.findMany({
       include: {
         tipo_campeonato: true,
+        usuarios: true,
       },
     });
 

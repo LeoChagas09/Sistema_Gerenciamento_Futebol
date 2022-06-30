@@ -35,7 +35,7 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.tipoFeedbackService.getTipoFeedback('http://localhost:3333/tipoFeedback/').subscribe({
+      this.tipoFeedbackService.getTipoFeedback().subscribe({
       next: retorno => (this.tiposFeedbacks = retorno),
       error: erro => (console.error(erro)),
     }));
@@ -53,7 +53,7 @@ export class FeedbackComponent implements OnInit {
     };
     console.log(feed);
 
-    this.feedbackService.postFeedback('http://localhost:3333/feedback/', feed).subscribe(feed => {feed.feedback})
+    this.feedbackService.postFeedback(feed).subscribe(feed => {feed.feedback})
 
     this.form_feed.reset(this.setFormFeedback(feed));
 
