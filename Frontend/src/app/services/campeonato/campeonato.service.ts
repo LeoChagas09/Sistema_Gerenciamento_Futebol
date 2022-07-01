@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Campeonato, Campeonatos } from 'src/app/interfaces';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,17 +10,17 @@ import { Campeonato, Campeonatos } from 'src/app/interfaces';
 })
 export class CampeonatoService {
 
-  baseUrl: string = 'http://localhost:3333/';
+  baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
   getCampeonatos():Observable<Campeonato[]>{
-    const url = `${this.baseUrl}campeonato/`
+    const url = `${this.baseUrl}/campeonato/`
     return this.http.get<Campeonato[]>(url)
   }
 
   postCampeonatos(campeonato: Campeonato): Observable<Campeonatos> {
-    const url = `${this.baseUrl}campeonato/cadastrar`
+    const url = `${this.baseUrl}/campeonato/cadastrar`
     return this.http.post<Campeonatos>(url, campeonato);
   }
 }

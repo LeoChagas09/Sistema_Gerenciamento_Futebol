@@ -1,8 +1,11 @@
 import { Router } from 'express';
+import isAuthenticated from '../middlewares/isAuthenticated';
 import { erroHandling } from '../model/Errorhandling';
 import { prisma } from '../prisma';
 
 export const JogoRoutes = Router();
+
+JogoRoutes.use(isAuthenticated);
 
 JogoRoutes.post('/', async (req, res) => {
   const { id_campeonato_fk, data_jogo } = req.body;

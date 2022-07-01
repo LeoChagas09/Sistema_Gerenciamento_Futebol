@@ -1,9 +1,12 @@
 import { Prisma } from '@prisma/client';
 import { Router } from 'express';
+import isAuthenticated from '../middlewares/isAuthenticated';
 import { erroHandling } from '../model/Errorhandling';
 import { prisma } from '../prisma';
 
 export const CampeonatoRoutes = Router();
+
+CampeonatoRoutes.use(isAuthenticated);
 
 CampeonatoRoutes.post('/cadastrar', async (req, res) => {
   const {

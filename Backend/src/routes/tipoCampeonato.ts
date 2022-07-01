@@ -1,8 +1,11 @@
 import { Router } from 'express';
+import isAuthenticated from '../middlewares/isAuthenticated';
 import { erroHandling } from '../model/Errorhandling';
 import { prisma } from '../prisma';
 
 export const tipoCampeonatoRoutes = Router();
+
+tipoCampeonatoRoutes.use(isAuthenticated);
 
 tipoCampeonatoRoutes.get('/', async (req, res) => {
   try {

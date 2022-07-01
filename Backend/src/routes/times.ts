@@ -1,8 +1,11 @@
 import { Router } from 'express';
+import isAuthenticated from '../middlewares/isAuthenticated';
 import { erroHandling } from '../model/Errorhandling';
 import { prisma } from '../prisma';
 
 export const TimesRoutes = Router();
+
+TimesRoutes.use(isAuthenticated);
 
 TimesRoutes.post('/', async (req, res) => {
   const { id_usuario_fk, id_campeonato, nome_time } = req.body;
