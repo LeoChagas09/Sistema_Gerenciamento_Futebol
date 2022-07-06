@@ -3,7 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { erroHandling } from '../model/Errorhandling';
 import { UsuarioService } from '../services/UsuarioService';
-import authConfig from '../config/auth';
+
 
 export class UsuarioController {
   async create(req: Request, res: Response) {
@@ -49,21 +49,9 @@ export class UsuarioController {
         return res.status(404).json(erroHandling(1, 'Nenhum usuario existente'));
       }
 
-      const compareSenha = await bcrypt.compare(senha, usuario.senha);
-
-      if (!compareSenha) {
-        return res.status(404).json(erroHandling(1, 'Credenciais não encontradas'));
-      }
-
-      const token = sign({}, authConfig.jwt.secret, {
-        subject: String(usuario.id_usuario),
-        expiresIn: authConfig.jwt.expiresIn,
-      });
-
-      return res.json({ usuario, token});
+      return res.json(usuario);
 
     } catch (error) {
-      console.log(error);
       return res.status(400).json(erroHandling(1, 'Error ao logar'));
     }
   }

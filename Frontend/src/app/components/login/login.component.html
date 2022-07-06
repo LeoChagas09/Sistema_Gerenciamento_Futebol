@@ -1,15 +1,15 @@
 <div class="login">
-  <form class="formulario">
+  <form [formGroup]="this.userForm" class="formulario" (ngSubmit)="onLogin()">
     <h2 class="form-title"> Entrar </h2>
       <div class="input-field">
-        <input placeholder="Email" type="text" class="validate">
+        <input placeholder="Email" type="email" class="validate" formControlName="email" required>
       </div>
       <div class="input-field">
-      <input placeholder="Senha" type="password" class="validate">
+      <input placeholder="Senha" type="password" class="validate" formControlName="senha" required>
       </div>
     <div class="action">
-      <a class="waves-effect waves-light btn" routerLink="/campeonatos" (click)="fazerLogin()">Entrar</a>
-      <a class="waves-effect waves-light btn" routerLink="/cadastro" (click)="criarConta()">Criar Conta</a>
+      <button class="waves-effect waves-light btn">Entrar</button>
+      <button class="waves-effect waves-light btn" routerLink="/cadastro">Criar Conta</button>
     </div>
   </form>
 </div>

@@ -14,8 +14,7 @@ const routes: Routes = [
   { path: 'editar', component: EditarCampeonatosComponent},
   { path: 'campeonatos', component: ListarCampeonatosComponent},
   { path: 'feedback', component: FeedbackComponent},
-  { path: '**',  redirectTo: '/home'},
-
+  { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

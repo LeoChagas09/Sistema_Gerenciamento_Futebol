@@ -35,6 +35,12 @@ export interface Campeonatos {
   campeonatos: Campeonato[];
 }
 
+
+export interface Login {
+  email: string;
+  senha: string;
+}
+
 export interface novaConta {
   id_usuario: number;
   nome: string;

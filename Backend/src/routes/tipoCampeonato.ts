@@ -5,7 +5,7 @@ import { prisma } from '../prisma';
 
 export const tipoCampeonatoRoutes = Router();
 
-tipoCampeonatoRoutes.use(isAuthenticated);
+// tipoCampeonatoRoutes.use(isAuthenticated);
 
 tipoCampeonatoRoutes.get('/', async (req, res) => {
   try {
