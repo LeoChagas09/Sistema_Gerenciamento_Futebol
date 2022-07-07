@@ -27,7 +27,6 @@ import { ListarCampeonatosComponent } from './components/campeonato/listar-campe
 import { HomeComponent } from './components/home/home.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { CriarCampeonatosComponent } from './components/campeonato/criar-campeonatos/criar-campeonatos.component';
-import { EditarCampeonatosComponent } from './components/campeonato/editar-campeonatos/editar-campeonatos.component';
 
 import localePT from '@angular/common/locales/pt';
 
@@ -46,7 +45,6 @@ registerLocaleData(localePT);
     HomeComponent,
     FeedbackComponent,
     CriarCampeonatosComponent,
-    EditarCampeonatosComponent
   ],
   imports: [
     BrowserModule,

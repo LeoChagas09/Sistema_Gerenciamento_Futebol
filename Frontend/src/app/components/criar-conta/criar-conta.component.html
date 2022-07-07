@@ -1,17 +1,17 @@
 <div class="criar-conta">
-  <form class="formulario">
+  <form [formGroup]="this.userForm" class="formulario">
     <h2 class="form-title"> Nova Conta </h2>
       <div class="input-field">
-        <input placeholder="Seu nome" type="text" class="validate">
+        <input placeholder="Seu nome" type="text" class="validate" formControlName="nome" required>
       </div>
       <div class="input-field">
-      <input placeholder="E-mail" type="email" class="validate">
+      <input placeholder="E-mail" type="email" class="validate" formControlName="email" required>
       </div>
       <div class="input-field">
-        <input placeholder="Crie sua senha" type="password" class="validate">
+        <input placeholder="Crie sua senha" type="password" class="validate" formControlName="senha" required>
         </div>
     <div class="action">
-      <a class="waves-effect waves-light btn">Criar Conta</a>
+      <button class="waves-effect waves-light btn" [disabled]="this.userForm.invalid" (click)="this.CriarUsuario()">Criar Conta</button>
     </div>
   </form>
 </div>

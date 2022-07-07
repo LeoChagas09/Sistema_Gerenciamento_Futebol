@@ -43,21 +43,11 @@ export class CriarCampeonatosComponent implements OnInit {
 
   criarCampeonato(): void {
 
-    const campeo: Campeonato = {
-      id_campeonato: 0,
-      id_tipo_fk: this.f['tipo_campeonato'].value,
-      id_usuario_fk: this.f['usuario_feedback'].value,
-      nome_campeonato: this.f['nome'].value,
-      data_campeonato: this.f['data'].value,
-      local_campeonato: this.f['local'].value,
+    const formValue : Campeonato = this.form_campeonato.getRawValue();
 
-    };
+    this.campeonatoService.postCampeonatos(formValue).subscribe(campeo => {campeo.campeonatos});
 
-    console.log(campeo);
-
-    this.campeonatoService.postCampeonatos(campeo).subscribe(campeo => {campeo.campeonatos});
-
-    this.form_campeonato.reset(this.setFormCampeonato(campeo));
+    this.form_campeonato.reset(this.setFormCampeonato(formValue));
 
     this.toast.success({detail: 'Campeonato cadastrado com Sucesso!' , duration: 8000});
   }

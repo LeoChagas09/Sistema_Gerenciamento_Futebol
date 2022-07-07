@@ -13,7 +13,7 @@ import { CriarCampeonatosComponent } from '../criar-campeonatos/criar-campeonato
 })
 export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
-  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'Local', 'jogo', 'botao'];
+  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'Local', 'jogo'];
   dataSource: Campeonato[] = [];
 
   subscriptions: Subscription = new Subscription();

@@ -41,7 +41,7 @@ export interface Login {
   senha: string;
 }
 
-export interface novaConta {
+export interface novoUsuario {
   id_usuario: number;
   nome: string;
   email: string;
@@ -49,5 +49,5 @@ export interface novaConta {
 }
 
 export interface ContaNova {
-  usuario: novaConta[];
+  usuario: novoUsuario[];
 }
