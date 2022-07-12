@@ -52,7 +52,6 @@
   display: flex;
   justify-content: center;
   color: green;
-
 }
 
 .input-field {
@@ -73,6 +72,8 @@
 .validate {
   color: white;
   padding: 8px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .action {

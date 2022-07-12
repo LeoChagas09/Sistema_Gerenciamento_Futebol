@@ -10,7 +10,7 @@
   }
 
   .form-title {
-    margin-top: -1rem;
+    margin-top: -50px;
   }
 }
 
@@ -27,7 +27,7 @@
   }
 
   .form-title {
-    margin-top: 13rem;
+    margin-top: 15rem;
   }
 }
 
@@ -42,17 +42,17 @@
 .formulario{
   display: flex;
   flex-direction: column;
-  height: 34rem;
+  height: 30.7rem;
   width: 50rem;
   margin: 0;
   justify-content: center;
-  margin-top: -50px;
 }
 
 .form-title {
   display: flex;
   justify-content: center;
   color: green;
+
 }
 
 .input-field {
@@ -72,6 +72,8 @@
 
 .validate {
   color: white;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .action {

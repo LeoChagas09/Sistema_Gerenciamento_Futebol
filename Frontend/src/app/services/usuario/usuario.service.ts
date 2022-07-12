@@ -5,7 +5,7 @@ import { ContaNova, Login, novoUsuario } from 'src/app/interfaces';
 import { environment } from 'src/environments/environment';
 
 export interface LoginResponseInterface {
-  msg: string;
+  token: string;
 }
 
 @Injectable({
@@ -17,7 +17,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  validaUsuario(data: Login):Observable<LoginResponseInterface>{
+  login(data: Login):Observable<LoginResponseInterface>{
     const url = `${this.baseUrl}/login/`
     return this.http.post<LoginResponseInterface>(url, data);
   }

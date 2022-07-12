@@ -43,13 +43,13 @@ export class UsuarioController {
 
       const service = new UsuarioService();
 
-      const usuario = await service.login(email, senha);
+      const token = await service.login(email, senha);
 
-      if (!usuario) {
-        return res.status(404).json(erroHandling(1, 'Nenhum usuario existente'));
+      if (!token) {
+        return res.status(404).json(erroHandling(1, 'email/senha inválidos'));
       }
 
-      return res.json(usuario);
+      return res.json({token});
 
     } catch (error) {
       return res.status(400).json(erroHandling(1, 'Error ao logar'));

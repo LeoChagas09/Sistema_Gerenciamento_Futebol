@@ -4,7 +4,7 @@ import { verify } from 'jsonwebtoken';
 import authConfig from '../config/auth';
 import { erroHandling } from '../model/Errorhandling';
 
-export default function isAuthenticated(req: Request, res: Response, next: NextFunction) {
+export function isAuthenticated(req: Request, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
 
   if(!authHeader) {
@@ -12,12 +12,10 @@ export default function isAuthenticated(req: Request, res: Response, next: NextF
   }
 
   //const [type, token] = authHeader.split(' ');
-  const token = authHeader.split(' ')[1];
+  //const token = authHeader.split(' ')[1];
 
   try {
-    const decodedToken = verify(token, authConfig.jwt.secret);
-
-    console.log(decodedToken);
+    const decodedToken = verify(authHeader, authConfig.jwt.secret);
 
     return next();
   } catch (error) {

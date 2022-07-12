@@ -29,6 +29,7 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { CriarCampeonatosComponent } from './components/campeonato/criar-campeonatos/criar-campeonatos.component';
 
 import localePT from '@angular/common/locales/pt';
+import { HttpInterceptService } from './services/http/http-intercept.service';
 
 
 
@@ -64,6 +65,7 @@ registerLocaleData(localePT);
     NgToastModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptService, multi: true },
     { provide: LOCALE_ID, useValue: 'pt-br'},
   ],
   bootstrap: [AppComponent]

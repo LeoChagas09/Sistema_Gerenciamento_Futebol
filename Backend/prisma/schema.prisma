@@ -8,24 +8,22 @@ datasource db {
 }
 
 model campeonato {
-  id_campeonato    Int              @id(map: "id_campeonato_pk") @default(autoincrement())
-  id_tipo_fk       Int?
-  id_usuario_fk    Int?
-  nome_campeonato  String?          @db.VarChar(200)
-  data_campeonato  DateTime?        @db.Date
-  local_campeonato String?          @db.VarChar(200)
-  tipo_campeonato  tipo_campeonato? @relation(fields: [id_tipo_fk], references: [id_tipo], onDelete: NoAction, onUpdate: NoAction, map: "id_tipo_fk")
-  usuarios         usuarios?        @relation(fields: [id_usuario_fk], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "id_usuario_fk")
-  jogo             jogo[]
-  times            times[]
+  id_campeonato    Int             @id(map: "id_campeonato_fk") @default(autoincrement())
+  id_tipo_fk       Int
+  id_usuario_fk    Int
+  nome_campeonato  String         @db.VarChar(200)
+  data_campeonato  DateTime       @db.Date
+  local_campeonato String        @db.VarChar(200)
+  tipo_campeonato  tipo_campeonato @relation(fields: [id_tipo_fk], references: [id_tipo], onDelete: NoAction, onUpdate: NoAction, map: "id_tipo_fk")
+  usuarios         usuarios        @relation(fields: [id_usuario_fk], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "id_usuario_fk")
 }
 
 model feedback {
   id_feedback         Int           @id(map: "id_feedback_pk") @default(autoincrement())
   id_tipo_feedback_fk Int
-  nome                String       @db.VarChar(200)
-  email               String      @db.VarChar(200)
-  mensagem            String      @db.VarChar(500)
+  nome                String?       @db.VarChar(200)
+  email               String?       @db.VarChar(200)
+  mensagem            String?       @db.VarChar(500)
   tipo_feedback       tipo_feedback @relation(fields: [id_tipo_feedback_fk], references: [id_tipo_feedback], onDelete: NoAction, onUpdate: NoAction, map: "id_tipo_feedback_fk")
 }
 
@@ -33,7 +31,6 @@ model jogo {
   id_jogo          Int              @id(map: "id_jogo_pk") @default(autoincrement())
   id_campeonato_fk Int?
   data_jogo        DateTime?        @db.Date
-  campeonato       campeonato?      @relation(fields: [id_campeonato_fk], references: [id_campeonato], onDelete: NoAction, onUpdate: NoAction, map: "id_campeonato_fk")
   jogo_resultado   jogo_resultado[]
 }
 
@@ -56,8 +53,6 @@ model times {
   id_usuario_fk  Int?
   id_campeonato  Int?
   nome_time      String?          @db.VarChar(200)
-  campeonato     campeonato?      @relation(fields: [id_campeonato], references: [id_campeonato], onDelete: NoAction, onUpdate: NoAction, map: "id_campeonato_fk")
-  usuarios       usuarios?        @relation(fields: [id_usuario_fk], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "id_usuario_fk")
   jogo_resultado jogo_resultado[]
   jogo_time      jogo_time[]
 }
@@ -80,5 +75,4 @@ model usuarios {
   email      String       @db.VarChar(200)
   senha      String       @db.VarChar(100)
   campeonato campeonato[]
-  times      times[]
 }

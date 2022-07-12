@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { isAuthenticated } from '../middlewares/isAuthenticated';
 import { CampeonatoRoutes } from './campeonato';
 import { FeedbackRoutes } from './feedback';
 import { JogoRoutes } from './jogo';
@@ -12,13 +13,13 @@ import { tipoFeedbackRoutes } from './tipoFeedback';
 const routes = Router();
 
 routes.use('/login', LoginRoutes);
-routes.use('/tipoCampeonato', tipoCampeonatoRoutes);
-routes.use('/tipoFeedback', tipoFeedbackRoutes);
-routes.use('/campeonato', CampeonatoRoutes);
-routes.use('/feedback', FeedbackRoutes);
-routes.use('/jogo', JogoRoutes);
-routes.use('/times', TimesRoutes);
-routes.use('/jogoTime', JogoTimeRoutes);
-routes.use('/jogoResultado', JogoResultadoRoutes);
+routes.use('/tipoCampeonato', isAuthenticated, tipoCampeonatoRoutes);
+routes.use('/tipoFeedback', isAuthenticated, tipoFeedbackRoutes);
+routes.use('/campeonato', isAuthenticated, CampeonatoRoutes);
+routes.use('/feedback',isAuthenticated, FeedbackRoutes);
+routes.use('/jogo', isAuthenticated, JogoRoutes);
+routes.use('/times', isAuthenticated, TimesRoutes);
+routes.use('/jogoTime', isAuthenticated, JogoTimeRoutes);
+routes.use('/jogoResultado', isAuthenticated, JogoResultadoRoutes);
 
 export default routes;

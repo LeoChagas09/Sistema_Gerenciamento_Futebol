@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    public usuarioService: UsuarioService,
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
     public router: Router,
     private fb: FormBuilder,
     private toast: NgToastService
@@ -37,19 +38,21 @@ export class LoginComponent implements OnInit {
 
     const formValue : Login = this.userForm.getRawValue();
 
-    this.usuarioService.validaUsuario(formValue).subscribe({
-      next: result => {
+     this.usuarioService.login(formValue).subscribe({
+      next: ({token}) => {
+        this.authService.armazenaJWT(token);
         this.router.navigate(['campeonatos']);
-        this.toast.success({detail: 'Login realizado com sucesso'});
+        this.toast.success({detail: 'Seja bem-vindo ao QFute'});
+
       },
-      error: erro => {
+      error: (erro) => {
         if(typeof erro.error.msg !== 'undefined') {
           this.toast.error(erro.error.msg);
           return;
         }
         this.toast.error({detail: 'Erro ao tentar logar'});
       }
-    });
+  });
   }
 
   criarConta(){

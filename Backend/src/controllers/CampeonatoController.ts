@@ -23,7 +23,7 @@ export class CampeonatoController {
         local_campeonato
         );
 
-        res.json(campeonato);
+      res.json(campeonato);
 
     } catch (error) {
       return res

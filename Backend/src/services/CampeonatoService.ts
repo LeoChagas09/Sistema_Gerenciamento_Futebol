@@ -15,7 +15,7 @@ export class CampeonatoService {
           id_tipo_fk,
           id_usuario_fk,
           nome_campeonato,
-          data_campeonato: new Date(),
+          data_campeonato: new Date(data_campeonato),
           local_campeonato,
         },
       });

@@ -32,7 +32,7 @@ export class UsuarioService {
     });
 
     if (!usuario) {
-      throw erroHandling(1, 'Nenhum usuario existente');
+      throw erroHandling(1, 'email/senha inválidos');
     }
 
     const compareSenha = await bcrypt.compare(password, usuario.senha);
@@ -41,14 +41,15 @@ export class UsuarioService {
         throw erroHandling(1, 'Credenciais não encontradas');
       }
 
-      const token = sign({}, authConfig.jwt.secret, {
-        subject: String(usuario.id_usuario),
+      const token = sign({
+        id_usuario: String(usuario.id_usuario),
+      }, authConfig.jwt.secret, {
         expiresIn: authConfig.jwt.expiresIn,
       });
 
-      const {senha, ...user} = usuario;
+      // const {senha, ...user} = usuario;
 
 
-    return {user, token};
+    return token;
   }
 }
