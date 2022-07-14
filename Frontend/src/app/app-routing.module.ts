@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListarCampeonatosComponent } from './components/campeonato/listar-campeonatos/listar-campeonatos.component';
 import { CriarContaComponent } from './components/criar-conta/criar-conta.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { JogosComponent } from './components/jogos/jogos.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { GuardAuthService } from './guards/guard-auth.service';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'cadastro', component: CriarContaComponent, canActivate: [GuardAuthService]},
   { path: 'campeonatos', component: ListarCampeonatosComponent, canActivate: [AuthGuardService]},
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuardService]},
+  { path: 'jogos', component: JogosComponent, canActivate: [AuthGuardService]},
   { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 

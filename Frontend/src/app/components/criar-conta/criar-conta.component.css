@@ -9,7 +9,7 @@
   }
 
   .form-title {
-    margin-top: -3rem;
+    margin-top: 1rem;
   }
 }
 
@@ -26,7 +26,7 @@
   }
 
   .form-title {
-    margin-top: 13rem;
+    margin-top: 15rem;
   }
 }
 
@@ -79,7 +79,7 @@
 .action {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
 }
 

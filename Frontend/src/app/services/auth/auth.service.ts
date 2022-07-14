@@ -8,8 +8,10 @@ export class AuthService {
 
   autenticado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() {
-
+  constructor( ) {
+    if(localStorage.getItem('token')){
+      this.autenticado.next(true);
+    }
    }
 
   armazenaJWT(token: string) {

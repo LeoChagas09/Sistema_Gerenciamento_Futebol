@@ -30,6 +30,7 @@ import { CriarCampeonatosComponent } from './components/campeonato/criar-campeon
 
 import localePT from '@angular/common/locales/pt';
 import { HttpInterceptService } from './services/http/http-intercept.service';
+import { JogosComponent } from './components/jogos/jogos.component';
 
 
 
@@ -46,6 +47,7 @@ registerLocaleData(localePT);
     HomeComponent,
     FeedbackComponent,
     CriarCampeonatosComponent,
+    JogosComponent,
   ],
   imports: [
     BrowserModule,

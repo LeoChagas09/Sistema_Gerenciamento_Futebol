@@ -11,6 +11,7 @@
         <input placeholder="Crie sua senha" type="password" class="validate" formControlName="senha" required>
         </div>
     <div class="action">
+      <button class="waves-effect waves-light btn" (click)="this.voltar()">Voltar</button>
       <button class="waves-effect waves-light btn" [disabled]="this.userForm.invalid" (click)="this.CriarUsuario()">Criar Conta</button>
     </div>
   </form>

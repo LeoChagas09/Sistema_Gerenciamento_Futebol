@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -10,12 +11,20 @@ export class HeaderComponent implements OnInit {
 
   public userLogado: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  public reload: any;
 
-
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userLogado = this.authService.getJWT() ? true : false;
+    this.authService.autenticado.subscribe((logado: boolean) => {
+      this.userLogado = logado;
+    });
+  }
+
+  logout() {
+    this.userLogado = false;
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
 }

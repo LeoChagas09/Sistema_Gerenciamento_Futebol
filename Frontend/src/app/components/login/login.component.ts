@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.toast.error(erro.error.msg);
           return;
         }
-        this.toast.error({detail: 'Erro ao tentar logar'});
+        this.toast.error({detail: 'Falha ao tentar logar', summary: 'Email/senha Inválidos' });
       }
   });
   }

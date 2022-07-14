@@ -35,7 +35,7 @@ export class CriarContaComponent implements OnInit {
     this.usuarioService.CriarUsuario(formValue).subscribe({
       next: result => {
         result.usuario;
-        this.router.navigate(['home']);
+        this.router.navigate(['login']);
         this.toast.success({detail: 'Usuário cadastrado com sucesso'});
       },
       error: erro => {
@@ -46,6 +46,10 @@ export class CriarContaComponent implements OnInit {
         this.toast.error({detail: 'Erro ao cadastrar novo usuário'});
       }
     });
+  }
+
+  voltar() {
+    this.router.navigate(['login'])
   }
 
 }
