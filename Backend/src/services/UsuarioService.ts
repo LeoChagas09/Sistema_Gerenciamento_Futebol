@@ -43,7 +43,7 @@ export class UsuarioService {
 
       const token = sign({
         id_usuario: String(usuario.id_usuario),
-      }, authConfig.jwt.secret, {
+      }, String(authConfig.jwt.secret), {
         expiresIn: authConfig.jwt.expiresIn,
       });
 

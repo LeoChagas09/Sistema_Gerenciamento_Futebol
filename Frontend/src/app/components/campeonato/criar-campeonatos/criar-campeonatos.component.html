@@ -6,7 +6,7 @@
       <div class="row">
         <mat-form-field class="select" appearance="outline">
           <mat-label>Tipo de Torneio</mat-label>
-          <mat-select name="tipo_campeonato" formControlName="tipo_campeonato" >
+          <mat-select name="tipo_campeonato" formControlName="id_tipo_fk" >
             <mat-option *ngFor="let campe of this.tiposCampeonatos" [value]="campe.id_tipo">
                {{ campe.nome_tipo }}
             </mat-option>
@@ -15,17 +15,17 @@
 
         <div appearance="fill">
           <label>Nome do Campeonato</label>
-          <input name="nome" formControlName="nome" placeholder="Nome do Campeonato" type="text" class="validate">
+          <input name="nome" formControlName="nome_campeonato" placeholder="Nome do Campeonato" type="text" class="validate">
         </div>
 
         <div appearance="fill">
           <label>Data do Campeonato</label>
-          <input name="data" formControlName="data" placeholder="Data do Campeonato" type="date" class="validate">
+          <input name="data" formControlName="data_campeonato" placeholder="Data do Campeonato" type="date" class="validate">
         </div>
 
           <div appearance="fill">
             <label>Local do Campeonato</label>
-            <input name="local" formControlName="local" placeholder="Local do Campeonato" type="text" class="validate">
+            <input name="local" formControlName="local_campeonato" placeholder="Local do Campeonato" type="text" class="validate">
           </div>
 
       </div>

@@ -15,7 +15,7 @@ const routes = Router();
 routes.use('/login', LoginRoutes);
 routes.use('/tipoCampeonato', isAuthenticated, tipoCampeonatoRoutes);
 routes.use('/tipoFeedback', isAuthenticated, tipoFeedbackRoutes);
-routes.use('/campeonato', isAuthenticated, CampeonatoRoutes);
+routes.use('/campeonato', CampeonatoRoutes);
 routes.use('/feedback',isAuthenticated, FeedbackRoutes);
 routes.use('/jogo', isAuthenticated, JogoRoutes);
 routes.use('/times', isAuthenticated, TimesRoutes);

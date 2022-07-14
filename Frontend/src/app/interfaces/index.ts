@@ -32,7 +32,7 @@ export interface Feedbacks {
 }
 
 export interface Campeonatos {
-  campeonatos: Campeonato[];
+  campeonato: Campeonato[];
 }
 
 

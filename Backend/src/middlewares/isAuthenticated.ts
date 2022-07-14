@@ -15,7 +15,7 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
   //const token = authHeader.split(' ')[1];
 
   try {
-    const decodedToken = verify(authHeader, authConfig.jwt.secret);
+    const decodedToken = verify(authHeader, String(authConfig.jwt.secret));
 
     return next();
   } catch (error) {
