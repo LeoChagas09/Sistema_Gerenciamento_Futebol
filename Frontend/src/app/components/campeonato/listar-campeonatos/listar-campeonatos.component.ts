@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -14,7 +15,7 @@ import { CriarCampeonatosComponent } from '../criar-campeonatos/criar-campeonato
 })
 export class ListarCampeonatosComponent implements OnInit, OnDestroy {
 
-  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'Local', 'jogo'];
+  displayedColumns: string[] = ['Tipo', 'Nome', 'Data', 'jogo'];
   dataSource: Campeonato[] = [];
 
   idUser = Number(this.authService.getPayloadJWT()?.id_usuario);

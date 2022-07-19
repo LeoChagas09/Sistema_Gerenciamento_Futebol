@@ -1,4 +1,6 @@
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { TimesService } from 'src/app/services/jogo/times.service';
 
 @Component({
   selector: 'app-jogos',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JogosComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(
+    private authService: AuthService,
+    public timeService: TimesService
+  ) { }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -14,4 +14,13 @@ export class TimesService {
     return times;
   }
 
+  async find(){
+    const times = await prisma.times.findMany({
+      orderBy: {
+        nome_time: 'asc'
+      },
+    });
+
+    return times;
+  }
 }

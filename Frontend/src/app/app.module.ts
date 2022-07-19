@@ -28,11 +28,11 @@ import { HomeComponent } from './components/home/home.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { CriarCampeonatosComponent } from './components/campeonato/criar-campeonatos/criar-campeonatos.component';
 
-import localePT from '@angular/common/locales/pt';
+
 import { HttpInterceptService } from './services/http/http-intercept.service';
 import { JogosComponent } from './components/jogos/jogos.component';
 
-
+import localePT from '@angular/common/locales/pt';
 
 registerLocaleData(localePT);
 
@@ -67,8 +67,9 @@ registerLocaleData(localePT);
     NgToastModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptService, multi: true },
     { provide: LOCALE_ID, useValue: 'pt-br'},
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptService, multi: true },
+
   ],
   bootstrap: [AppComponent]
 })

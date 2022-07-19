@@ -10,7 +10,6 @@ export class CampeonatoController {
         id_usuario_fk,
         nome_campeonato,
         data_campeonato,
-        local_campeonato,
       } = req.body;
 
       const service = new CampeonatoService();
@@ -20,7 +19,6 @@ export class CampeonatoController {
         id_usuario_fk,
         nome_campeonato,
         data_campeonato,
-        local_campeonato
         );
 
       res.json(campeonato);

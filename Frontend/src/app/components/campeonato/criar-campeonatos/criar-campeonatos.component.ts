@@ -19,7 +19,6 @@ export class CriarCampeonatosComponent implements OnInit {
     id_tipo_fk: new FormControl('', [Validators.required]),
     nome_campeonato: new FormControl('', [Validators.required, Validators.maxLength(200)]),
     data_campeonato: new FormControl('', [Validators.required]),
-    local_campeonato: new FormControl('', [Validators.required, Validators.maxLength(200)]),
   });
 
   constructor(
@@ -54,7 +53,7 @@ export class CriarCampeonatosComponent implements OnInit {
 
     this.form_campeonato.reset(this.setFormCampeonato(formValue));
 
-    this.toast.success({detail: 'Campeonato cadastrado com Sucesso!' , duration: 8000});
+    this.toast.success({detail: 'Campeonato cadastrado com Sucesso!' , duration: 15000});
 
     document.location.reload();
   }
@@ -68,7 +67,6 @@ export class CriarCampeonatosComponent implements OnInit {
     this.f['id_tipo_fk'].setValue(campeonato.id_tipo_fk);
     this.f['nome_campeonato'].setValue(campeonato.nome_campeonato);
     this.f['data_campeonato'].setValue(campeonato.data_campeonato);
-    this.f['local_campeonato'].setValue(campeonato.local_campeonato);
   }
 
 }

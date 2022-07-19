@@ -6,8 +6,7 @@ export class CampeonatoService {
     id_tipo_fk: number,
     id_usuario_fk: number,
     nome_campeonato: string,
-    data_campeonato: Date,
-    local_campeonato: string,
+    data_campeonato: string,
     ) {
       const campeonato =
       await prisma.campeonato.create<Prisma.campeonatoCreateArgs>({
@@ -16,9 +15,8 @@ export class CampeonatoService {
           id_usuario_fk,
           nome_campeonato,
           data_campeonato: new Date(data_campeonato),
-          local_campeonato,
         },
-      });
+      })
 
       return campeonato;
     }

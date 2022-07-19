@@ -4,8 +4,6 @@ export interface Campeonato {
   id_usuario_fk: number,
   nome_campeonato: string,
   data_campeonato: string,
-  local_campeonato: string,
-  //tipo_campeonato: TipoCampeonato
 }
 
 export interface TipoCampeonato {
@@ -50,4 +48,14 @@ export interface novoUsuario {
 
 export interface ContaNova {
   usuario: novoUsuario[];
+}
+
+export interface Time {
+  id_usuario_fk: number,
+  id_campeonato: number,
+  nome_time: string
+}
+
+export interface Times {
+  time: Time[];
 }

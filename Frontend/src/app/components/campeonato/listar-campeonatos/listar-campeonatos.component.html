@@ -28,14 +28,7 @@
       <th mat-header-cell *matHeaderCellDef> Data do Campeonato </th>
       <td mat-cell *matCellDef="let element">
         <span class="mobile-label">Data Campeonato: </span>
-        {{element.data_campeonato | date: "dd/MMMM/yyyy" :"":"pt-BR" }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="Local">
-      <th mat-header-cell *matHeaderCellDef> Local do Campeonato </th>
-      <td mat-cell *matCellDef="let element">
-        <span class="mobile-label">Local Campeonato: </span>
-        {{element.local_campeonato }} </td>
+        {{element.data_campeonato | date: 'dd/MMMM/yyyy' : '+1' : 'pt-br'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="jogo">

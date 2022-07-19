@@ -10,7 +10,7 @@ export class TimesController {
 
       const service = new TimesService();
 
-      const time = service.create(id_usuario_fk, id_campeonato, nome_time);
+      const time = await service.create(id_usuario_fk, id_campeonato, nome_time);
 
       res.json(time);
 
@@ -18,6 +18,21 @@ export class TimesController {
       return res
       .status(400)
       .json(erroHandling(1, 'Error ao criar um novo time'));
+    }
+  }
+
+  async find(req: Request, res: Response) {
+    try {
+      const service = new TimesService();
+
+      const time = await service.find();
+
+      res.json(time);
+
+    } catch (error) {
+      return res
+      .status(400)
+      .json(erroHandling(1, 'Error ao buscar times'));
     }
   }
 
