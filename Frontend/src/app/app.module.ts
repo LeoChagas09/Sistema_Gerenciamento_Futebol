@@ -14,7 +14,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatSortModule } from '@angular/material/sort';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,12 +30,15 @@ import { ListarCampeonatosComponent } from './components/campeonato/listar-campe
 import { HomeComponent } from './components/home/home.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { CriarCampeonatosComponent } from './components/campeonato/criar-campeonatos/criar-campeonatos.component';
+import { ListarTimesComponent } from './components/time/listar-times/listar-times.component';
+import { CriarTimesComponent } from './components/time/criar-times/criar-times.component';
 
 
 import { HttpInterceptService } from './services/http/http-intercept.service';
 import { JogosComponent } from './components/jogos/jogos.component';
 
 import localePT from '@angular/common/locales/pt';
+
 
 registerLocaleData(localePT);
 
@@ -48,6 +54,8 @@ registerLocaleData(localePT);
     FeedbackComponent,
     CriarCampeonatosComponent,
     JogosComponent,
+    ListarTimesComponent,
+    CriarTimesComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +72,10 @@ registerLocaleData(localePT);
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    NgToastModule
+    NgToastModule,
+    MatPaginatorModule,
+    MatTooltipModule,
+    MatSortModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br'},

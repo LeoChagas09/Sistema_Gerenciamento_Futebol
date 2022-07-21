@@ -19,8 +19,13 @@
         </div>
 
         <div appearance="fill">
-          <label>Data do Campeonato</label>
-          <input name="data" formControlName="data_campeonato" placeholder="Data do Campeonato" type="date" class="validate">
+          <label>Início Campeonato</label>
+          <input name="data" formControlName="data_inicio_campeonato" placeholder="Início Campeonato" type="date" class="validate">
+        </div>
+
+        <div appearance="fill">
+          <label>Final do Campeonato</label>
+          <input name="data" formControlName="data_final_campeonato" placeholder="Final do Campeonato" type="date" class="validate">
         </div>
 
       </div>
@@ -29,5 +34,5 @@
 </div>
 
 <div mat-dialog-actions class="button">
-    <button class="waves-effect waves-light btn" [disabled]="this.form_campeonato.invalid" (click)="this.criarCampeonato()">Criar Campeonato</button>
+    <button id="refresh" class="waves-effect waves-light btn" [disabled]="this.form_campeonato.invalid" (click)="this.criarCampeonato()">Criar Campeonato</button>
 </div>

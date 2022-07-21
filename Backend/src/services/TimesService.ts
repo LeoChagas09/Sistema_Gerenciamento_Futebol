@@ -23,4 +23,14 @@ export class TimesService {
 
     return times;
   }
+
+  async findByCampeonato(id: number) {
+    const times = await prisma.times.findMany({
+      where: {
+        id_campeonato: id
+      }
+    });
+
+    return times;
+  }
 }

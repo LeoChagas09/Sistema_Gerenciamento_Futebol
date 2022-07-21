@@ -3,7 +3,8 @@ export interface Campeonato {
   id_tipo_fk: number,
   id_usuario_fk: number,
   nome_campeonato: string,
-  data_campeonato: string,
+  data_inicio_campeonato: string,
+  data_final_campeonato: string,
 }
 
 export interface TipoCampeonato {

@@ -20,9 +20,10 @@
 
 .tabela {
   display: flex;
+  margin: 0 auto;
   justify-content: center;
   padding-top: 20px;
-  width: 100%;
+  width: 45rem;
   margin-bottom: 6.89rem;
 }
 
@@ -40,6 +41,23 @@
 
 .mobile-label {
   display: none;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 20rem;
+  background-color: green;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 @media(max-width: 600px) {

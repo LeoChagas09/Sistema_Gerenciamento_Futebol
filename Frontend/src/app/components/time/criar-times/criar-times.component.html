@@ -1,0 +1,19 @@
+<div mat-dialog-content>
+  <div class="container">
+    <h4 mat-dialog-title> Novo Time </h4>
+
+    <form [formGroup]="this.form_time" class="row" >
+      <div class="row">
+        <div appearance="fill">
+          <label>Nome do Time</label>
+          <input name="nome" formControlName="nome_time" placeholder="Nome do Time" type="text" class="validate">
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div mat-dialog-actions class="button">
+    <button class="waves-effect waves-light btn" [disabled]="this.form_time.invalid" (click)="this.criarTimes()">Criar Time</button>
+</div>

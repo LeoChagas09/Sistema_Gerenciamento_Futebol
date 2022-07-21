@@ -17,7 +17,7 @@ routes.use('/tipoFeedback', isAuthenticated, tipoFeedbackRoutes);
 routes.use('/campeonato', isAuthenticated, CampeonatoRoutes);
 routes.use('/feedback',isAuthenticated, FeedbackRoutes);
 routes.use('/jogo', JogoRoutes);
-routes.use('/times', TimesRoutes);
+routes.use('/times', isAuthenticated, TimesRoutes);
 routes.use('/jogoResultado', isAuthenticated, JogoResultadoRoutes);
 
 export default routes;

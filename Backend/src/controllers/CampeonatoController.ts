@@ -9,7 +9,10 @@ export class CampeonatoController {
         id_tipo_fk,
         id_usuario_fk,
         nome_campeonato,
-        data_campeonato,
+        data_inicio_campeonato,
+        data_final_campeonato,
+        status_jogo = 0,
+        status_times = 0,
       } = req.body;
 
       const service = new CampeonatoService();
@@ -18,7 +21,10 @@ export class CampeonatoController {
         id_tipo_fk,
         id_usuario_fk,
         nome_campeonato,
-        data_campeonato,
+        data_inicio_campeonato,
+        data_final_campeonato,
+        status_jogo,
+        status_times
         );
 
       res.json(campeonato);
@@ -59,6 +65,23 @@ export class CampeonatoController {
        return res
       .status(400)
       .json(erroHandling(1, 'Erro ao buscar os campeonatos'));
+    }
+  }
+
+  async updateStatusTime(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+
+      const service = new CampeonatoService();
+
+      const campeonato = await service.updateStatusTime(Number(id));
+
+      res.json(campeonato);
+
+    } catch (error) {
+       return res
+      .status(400)
+      .json(erroHandling(1, 'Erro por conta de ter times impares'));
     }
   }
 }

@@ -18,11 +18,12 @@ export class CriarCampeonatosComponent implements OnInit {
   form_campeonato = new FormGroup({
     id_tipo_fk: new FormControl('', [Validators.required]),
     nome_campeonato: new FormControl('', [Validators.required, Validators.maxLength(200)]),
-    data_campeonato: new FormControl('', [Validators.required]),
+    data_inicio_campeonato: new FormControl('', [Validators.required]),
+    data_final_campeonato: new FormControl('', [Validators.required]),
   });
 
   constructor(
-    public dialogRef: MatDialogRef<CriarCampeonatosComponent>,
+    private dialogRef: MatDialogRef<CriarCampeonatosComponent>,
     public tipoCampeonatoService: TipoCampeonatoService,
     public campeonatoService: CampeonatoService,
     private authService: AuthService,
@@ -36,11 +37,7 @@ export class CriarCampeonatosComponent implements OnInit {
     subscriptions: Subscription = new Subscription();
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.tipoCampeonatoService.getTipoCampeonato().subscribe({
-      next: retorno => (this.tiposCampeonatos = retorno),
-      error: erro => (console.error(erro)),
-    }));
+    this.listaTipoCampeonatos();
   }
 
   criarCampeonato(): void {
@@ -49,13 +46,24 @@ export class CriarCampeonatosComponent implements OnInit {
 
     formValue.id_usuario_fk = this.data.idUser;
 
-    this.campeonatoService.postCampeonatos(formValue).subscribe(campeo => {campeo.campeonato});
+    this.campeonatoService.postCampeonatos(formValue).subscribe({
+      next: retorno => (retorno.campeonato),
+      error: erro => (console.error(erro)),
+    });
 
     this.form_campeonato.reset(this.setFormCampeonato(formValue));
 
-    this.toast.success({detail: 'Campeonato cadastrado com Sucesso!' , duration: 15000});
+    this.toast.success({detail: 'Campeonato cadastrado com Sucesso!' , duration: 8000});
 
-    document.location.reload();
+    this.dialogRef.close(formValue);
+  }
+
+  listaTipoCampeonatos() {
+    this.subscriptions.add(
+      this.tipoCampeonatoService.getTipoCampeonato().subscribe({
+      next: retorno => (this.tiposCampeonatos = retorno),
+      error: erro => (console.error(erro)),
+    }));
   }
 
   get f() {
@@ -66,7 +74,8 @@ export class CriarCampeonatosComponent implements OnInit {
     if(typeof campeonato === 'undefined') return;
     this.f['id_tipo_fk'].setValue(campeonato.id_tipo_fk);
     this.f['nome_campeonato'].setValue(campeonato.nome_campeonato);
-    this.f['data_campeonato'].setValue(campeonato.data_campeonato);
+    this.f['data_inicio_campeonato'].setValue(campeonato.data_inicio_campeonato);
+    this.f['data_final_campeonato'].setValue(campeonato.data_final_campeonato);
   }
 
 }

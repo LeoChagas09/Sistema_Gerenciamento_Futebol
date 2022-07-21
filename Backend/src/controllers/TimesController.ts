@@ -36,4 +36,21 @@ export class TimesController {
     }
   }
 
+  async findByUser(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+
+      const service = new TimesService();
+
+      const times = await service.findByCampeonato(Number(id));
+
+      res.json(times);
+
+    } catch (error) {
+       return res
+      .status(400)
+      .json(erroHandling(1, 'Erro ao buscar os campeonatos'));
+    }
+  }
+
 }

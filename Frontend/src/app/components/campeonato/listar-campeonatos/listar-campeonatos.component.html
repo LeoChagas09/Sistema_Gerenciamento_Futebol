@@ -1,50 +1,79 @@
 <div class="container">
   <div class="header">
     <h4 class="titulo"> Campeonatos </h4>
-    <button class="button" mat-fab color="warn" (click)="this.openDialog()">
+    <button class="button" mat-fab color="warn" (click)="this.openDialog()" matTooltip="Criar Campeonato">
       <mat-icon>add</mat-icon>
     </button>
   </div>
+
+  <div class="input-field">
+    <input type="text" placeholder="Pesquisar Colunas" class="validate" (keyup)="filtrar($event)">
+  </div>
+
 </div>
 
 <div class="tabela">
-  <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="this.dataSource" matSort>
 
-    <ng-container matColumnDef="Tipo">
-      <th mat-header-cell *matHeaderCellDef > Tipo do Campeonato </th>
-      <td mat-cell *matCellDef="let element">
-        <span class="mobile-label">Tipo Campeonato: </span>
-        {{ element.tipo_campeonato.nome_tipo }} </td>
-    </ng-container>
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="mobile-label">Nome: </span>
+          {{element.nome_campeonato}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="Nome">
-      <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let element">
-        <span class="mobile-label">Nome: </span>
-        {{element.nome_campeonato}} </td>
-    </ng-container>
+      <ng-container  matColumnDef="data_inicio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Início do Campeonato </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="mobile-label"> Início do Campeonato: </span>
+          {{element.data_inicio_campeonato | date: 'dd/MMMM/yyyy' : '+1' : 'pt-br'}} </td>
+      </ng-container>
 
-    <ng-container  matColumnDef="Data">
-      <th mat-header-cell *matHeaderCellDef> Data do Campeonato </th>
-      <td mat-cell *matCellDef="let element">
-        <span class="mobile-label">Data Campeonato: </span>
-        {{element.data_campeonato | date: 'dd/MMMM/yyyy' : '+1' : 'pt-br'}} </td>
-    </ng-container>
+      <ng-container  matColumnDef="data_final">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Final do Campeonato </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="mobile-label">Final do Campeonato: </span>
+          {{element.data_final_campeonato | date: 'dd/MMMM/yyyy' : '+1' : 'pt-br'}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="jogo">
-      <th  mat-header-cell *matHeaderCellDef>Jogos</th>
-      <td mat-cell *matCellDef class="jogos">
-        <button class="button" mat-mini-fab color="warn" routerLink="/jogos">
-          <mat-icon>games</mat-icon>
-        </button>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo do Campeonato </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="mobile-label">Tipo Campeonato: </span>
+          {{ element.tipo_campeonato.nome_tipo }} </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <ng-container matColumnDef="times">
+        <th  mat-header-cell *matHeaderCellDef class="botao"> Definir Times</th>
+        <td  mat-cell *matCellDef="let element" class="botao">
+          <button class="button" mat-mini-fab color="warn" (click)="RedirectTimes(element.status_times, element.id_campeonato)" matTooltip="Definir Times">
+            <mat-icon>games</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-  </table>
+      <ng-container matColumnDef="jogo">
+        <th  mat-header-cell *matHeaderCellDef class="botao">Acompanhar Jogos</th>
+        <td mat-cell *matCellDef="let element"  class="botao">
+          <button class="button" mat-mini-fab color="warn"  (click)="RedirectJogo(element.status_jogo)" matTooltip="Acompanhar Jogos">
+            <mat-icon>tv</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [length]="100"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page">
+    </mat-paginator>
+
+  </div>
 </div>
 
 

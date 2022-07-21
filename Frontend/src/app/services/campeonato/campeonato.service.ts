@@ -28,4 +28,9 @@ export class CampeonatoService {
     const url = `${this.baseUrl}/campeonato/cadastrar`
     return this.http.post<Campeonatos>(url, campeonato);
   }
+
+  updateCampeonatos(id: number):Observable<Campeonatos> {
+    const url = `${this.baseUrl}/campeonato/times/${id}`
+    return this.http.get<Campeonatos>(url);
+  }
 }

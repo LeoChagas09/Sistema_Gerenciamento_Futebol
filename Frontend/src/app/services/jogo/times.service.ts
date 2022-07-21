@@ -13,8 +13,8 @@ export class TimesService {
 
   constructor(private http: HttpClient) { }
 
-  getTimes():Observable<Time[]>{
-    const url = `${this.baseUrl}/times/`
+  getTimes(id: number):Observable<Time[]>{
+    const url = `${this.baseUrl}/times/campeonato/${id}`
     return this.http.get<Time[]>(url)
   }
 
