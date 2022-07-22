@@ -1,20 +1,25 @@
 <div class="container">
   <div class="header">
     <h4 class="titulo"> Campeonatos </h4>
-    <button class="button" mat-fab color="warn" (click)="this.openDialog()" matTooltip="Criar Campeonato">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div class="buttons">
+      <button class="button" mat-fab color="warn" (click)="this.openDialog()" matTooltip="Criar Campeonato">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button class="button" mat-fab color="primary" (click)="this.exportExcel()" matTooltip="Exportar Excel">
+        <mat-icon>insert_drive_file</mat-icon>
+      </button>
+    </div>
   </div>
 
-  <div class="input-field">
-    <input type="text" placeholder="Pesquisar Colunas" class="validate" (keyup)="filtrar($event)">
-  </div>
+    <div class="input-field">
+      <input type="text" placeholder="Pesquisar Colunas" class="validate" (keyup)="filtrar($event)">
+    </div>
 
 </div>
 
-<div class="tabela">
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="this.dataSource" matSort>
+<div class="tabela" >
+  <div class="mat-elevation-z8" #TABLE>
+    <table mat-table #table [dataSource]="this.dataSource" matSort>
 
       <ng-container matColumnDef="nome">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
@@ -67,14 +72,11 @@
 
     </table>
 
-    <mat-paginator [length]="100"
-    [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page">
-    </mat-paginator>
+      <mat-paginator [length]="100"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page">
+      </mat-paginator>
 
   </div>
 </div>
-
-
-

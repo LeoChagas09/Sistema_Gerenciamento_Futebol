@@ -1,8 +1,7 @@
-<div class="header">
-  <img class="img" matTooltip="QFute" src="https://mh-1-agencia-estoque.panthermedia.net/media/media_detail/0007000000/07089000/~campo-de-futebol_07089595_detail.jpg">
-  <a class="logo">QFute</a>
+<div class="header" *ngIf="this.userLogado">
+  <img class="img" src="../../../assets/logo.jpeg">
   <div class="header-right">
-    <div *ngIf="this.userLogado">
+    <div>
       <a routerLink="/campeonatos">Campeonato</a>
       <a routerLink="/feedback">Feedback</a>
       <a routerLink="/login" (click)="this.logout()">Sair</a>

@@ -38,6 +38,7 @@ import { HttpInterceptService } from './services/http/http-intercept.service';
 import { JogosComponent } from './components/jogos/jogos.component';
 
 import localePT from '@angular/common/locales/pt';
+import { ExporterService } from './services/Export/exporter.service';
 
 
 registerLocaleData(localePT);
@@ -80,6 +81,7 @@ registerLocaleData(localePT);
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br'},
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptService, multi: true },
+    ExporterService
 
   ],
   bootstrap: [AppComponent]

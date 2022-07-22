@@ -1,14 +1,16 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Subscription } from 'rxjs';
-import { Campeonato } from 'src/app/interfaces';
+import { Campeonato, CampeonatoTeste } from 'src/app/interfaces';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
 import { CriarCampeonatosComponent } from '../criar-campeonatos/criar-campeonatos.component';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ExporterService } from 'src/app/services/Export/exporter.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-listar-campeonatos',
@@ -26,6 +28,8 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy, AfterViewI
 
   subscriptions: Subscription = new Subscription();
 
+  @ViewChild('TABLE', { read: ElementRef }) table!: ElementRef;
+
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -35,7 +39,8 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   constructor(
-    public campeonatoService: CampeonatoService,
+    private campeonatoService: CampeonatoService,
+    private excelService: ExporterService,
     public dialog: MatDialog,
     private router: Router,
     private authService: AuthService,
@@ -67,9 +72,10 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy, AfterViewI
   listaCampeonatos(){
     this.subscriptions.add(
       this.campeonatoService.getCampeonatosUser(this.idUser).subscribe({
-      next: retorno => (this.dataSource.data = retorno),
-      error: erro => (console.error(erro)),
-    }));
+        next: retorno => (this.dataSource.data = retorno),
+        error: erro => (console.error(erro)),
+      }),
+    );
   }
 
   RedirectTimes(status: number, id: number) {
@@ -96,4 +102,15 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy, AfterViewI
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  exportExcel(){
+    this.excelService.exportExcel(this.dataSource.data, 'campeonatos');
+
+    // const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    // const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    // XLSX.utils.book_append_sheet(wb, ws, 'Campeonatos');
+
+    // XLSX.writeFile(wb, 'Campeonatos.xlsx');
+  }
+
 }

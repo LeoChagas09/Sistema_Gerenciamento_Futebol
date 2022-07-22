@@ -38,6 +38,21 @@
   background-size: cover;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-color: green;
+  padding: 10px 10px;
+}
+
+.img{
+  float: left;
+  height: 55px;
+  width: 90px;
+  padding-right: 10px;
+}
+
 
 .formulario{
   display: flex;

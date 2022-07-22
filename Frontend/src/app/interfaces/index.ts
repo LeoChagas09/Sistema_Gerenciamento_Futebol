@@ -7,6 +7,13 @@ export interface Campeonato {
   data_final_campeonato: string,
 }
 
+export interface CampeonatoTeste {
+  nome_campeonato: string,
+  data_inicio_campeonato: string,
+  data_final_campeonato: string,
+  TipoCampeonato: string,
+}
+
 export interface TipoCampeonato {
   id_tipo: number,
   nome_tipo: string,

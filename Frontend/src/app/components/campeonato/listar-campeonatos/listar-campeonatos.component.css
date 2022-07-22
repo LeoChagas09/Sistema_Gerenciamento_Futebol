@@ -8,6 +8,12 @@
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
 
 }
 
