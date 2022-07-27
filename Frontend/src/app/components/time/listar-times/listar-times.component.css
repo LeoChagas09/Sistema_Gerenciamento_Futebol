@@ -5,10 +5,19 @@
   padding-top: 15px;
 }
 
+.teste {
+  text-align: center;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
+}
 
+.buttons {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
 }
 
 .input-field {
@@ -41,6 +50,7 @@
 
 .mobile-label {
   display: none;
+  text-align: center;
 }
 
 .action {

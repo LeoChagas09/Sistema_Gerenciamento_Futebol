@@ -56,4 +56,8 @@ export class CriarTimesComponent implements OnInit {
     this.f['nome_time'].setValue(time.nome_time);
   }
 
+  fechar(){
+    this.dialogRef.close(this.form_time);
+  }
+
 }

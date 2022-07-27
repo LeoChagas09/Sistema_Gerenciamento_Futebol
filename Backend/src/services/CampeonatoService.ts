@@ -73,7 +73,7 @@ export class CampeonatoService {
       quantTimes++;
     })
 
-    if(quantTimes % 2 == 0) {
+    if(quantTimes % 2 == 0 && quantTimes >= 2) {
 
       const campeonato = await prisma.campeonato.update({
         where: {

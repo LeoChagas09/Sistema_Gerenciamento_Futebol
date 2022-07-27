@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Subscription } from 'rxjs';
 import { Campeonato, TipoCampeonato } from 'src/app/interfaces';
@@ -27,6 +28,7 @@ export class CriarCampeonatosComponent implements OnInit {
     public tipoCampeonatoService: TipoCampeonatoService,
     public campeonatoService: CampeonatoService,
     private authService: AuthService,
+    private router: Router,
     private fb: FormBuilder,
     private toast: NgToastService,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -76,6 +78,10 @@ export class CriarCampeonatosComponent implements OnInit {
     this.f['nome_campeonato'].setValue(campeonato.nome_campeonato);
     this.f['data_inicio_campeonato'].setValue(campeonato.data_inicio_campeonato);
     this.f['data_final_campeonato'].setValue(campeonato.data_final_campeonato);
+  }
+
+  fechar(){
+    this.dialogRef.close(this.form_campeonato);
   }
 
 }

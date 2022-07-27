@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,8 +7,10 @@ import { NgToastService } from 'ng-angular-popup';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
+import { ExporterService } from 'src/app/services/Export/exporter.service';
 import { TimesService } from 'src/app/services/jogo/times.service';
 import { CriarTimesComponent } from '../criar-times/criar-times.component';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-listar-times',
@@ -26,6 +28,8 @@ export class ListarTimesComponent implements OnInit {
 
   subscriptions: Subscription = new Subscription();
 
+  @ViewChild('TABLE', { read: ElementRef }) table!: ElementRef;
+
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -40,7 +44,8 @@ export class ListarTimesComponent implements OnInit {
     private toast: NgToastService,
     private timesService: TimesService,
     private route: ActivatedRoute,
-    private campeonatoService: CampeonatoService
+    private campeonatoService: CampeonatoService,
+    private excelService: ExporterService,
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +63,7 @@ export class ListarTimesComponent implements OnInit {
 
   openDialog(): void {
     const dialog = this.dialog.open(CriarTimesComponent, {
+      disableClose: true,
       width: '600px',
       data: {idUser: this.idUser, id: this.id}
     });
@@ -84,6 +90,16 @@ export class ListarTimesComponent implements OnInit {
   filtrar(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  exportExcel(){
+    // this.excelService.exportExcel(this.dataSource.data, 'times');
+
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Times');
+
+    XLSX.writeFile(wb, 'Times.xlsx');
   }
 
 }

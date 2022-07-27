@@ -14,7 +14,6 @@
   display: flex;
   width: 150px;
   justify-content: space-between;
-
 }
 
 .input-field {
@@ -68,6 +67,6 @@
 
 @media screen and (min-width: 1920px) {
   .tabela {
-    margin-bottom: 27.69rem;
+    margin-bottom: 23.5rem;
   }
 }
