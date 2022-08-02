@@ -59,6 +59,7 @@ export interface ContaNova {
 }
 
 export interface Time {
+  id_time: number;
   id_usuario_fk: number,
   id_campeonato: number,
   nome_time: string
@@ -66,4 +67,17 @@ export interface Time {
 
 export interface Times {
   time: Time[];
+}
+
+export interface Jogo {
+  id_jogo: number;
+  id_campeonato_fk: number
+  data_jogo: string;
+  id_time_1_fk: number;
+  id_time_2_fk: number;
+  local_jogo: string;
+}
+
+export interface Jogos {
+  jogo: Jogo[];
 }

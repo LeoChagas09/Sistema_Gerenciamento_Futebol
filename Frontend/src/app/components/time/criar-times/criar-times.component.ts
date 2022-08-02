@@ -3,8 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { Time, Times } from 'src/app/interfaces';
-import { TimesService } from 'src/app/services/jogo/times.service';
+import { Time } from 'src/app/interfaces';
+import { TimesService } from 'src/app/services/times/times.service';
+
 
 @Component({
   selector: 'app-criar-times',

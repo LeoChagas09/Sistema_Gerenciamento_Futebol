@@ -1,16 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
 import { ExporterService } from 'src/app/services/Export/exporter.service';
-import { TimesService } from 'src/app/services/jogo/times.service';
 import { CriarTimesComponent } from '../criar-times/criar-times.component';
 import * as XLSX from 'xlsx';
+import { TimesService } from 'src/app/services/times/times.service';
+import { Time, Times } from 'src/app/interfaces';
+import { debounceTime, of, startWith, Subscription, switchMap } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-listar-times',
@@ -19,23 +19,36 @@ import * as XLSX from 'xlsx';
 })
 export class ListarTimesComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome'];
-  dataSource = new MatTableDataSource<any>();
-
   idUser = Number(this.authService.getPayloadJWT()?.id_usuario);
 
   id: any;
 
   subscriptions: Subscription = new Subscription();
 
-  @ViewChild('TABLE', { read: ElementRef }) table!: ElementRef;
+  buscar = new FormControl();
+  shoesControl = new FormControl();
+  time: Time[] = [];
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  $search = this.buscar.valueChanges.pipe(
+    startWith(null),
+    debounceTime(100),
+    switchMap((result: any) => {
+      if(!result) return of(this.time);
+      result = result.toLowerCase();
+      return of(
+        this.time.filter(x => x.nome_time.toLowerCase().indexOf(result) >= 0)
+      );
+    })
+  )
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  selectionChange(option: any) {
+    let value = this.shoesControl.value || [];
+    if(option.selected) value.push(option.value);
+    else value = value.filter((x: any) => x != option.value);
+    this.shoesControl.setValue(value);
   }
+
+  @ViewChild('shoes', { read: ElementRef }) select!: ElementRef;
 
   constructor(
     public dialog: MatDialog,
@@ -55,8 +68,8 @@ export class ListarTimesComponent implements OnInit {
 
   listarTimes(){
     this.subscriptions.add(
-      this.timesService.getTimes(this.id).subscribe({
-      next: retorno => (this.dataSource.data = retorno),
+      this.timesService.getTimes().subscribe({
+      next: retorno => (this.time = retorno),
       error: erro => (console.error(erro)),
     }));
   }
@@ -77,25 +90,19 @@ export class ListarTimesComponent implements OnInit {
   Finish(id: number) {
     this.campeonatoService.updateCampeonatos(id).subscribe({
       next: retorno => (retorno.campeonato, this.router.navigate(['/campeonatos'])),
-      error: erro => (this.toast.error({
-        detail: 'Não é possivel finalizar cadastro', summary: 'Qtde. de times não pode ser ímpares' , duration: 8000
-      })),
     });
   }
+
+
 
   voltar() {
     this.router.navigate(['/campeonatos']);
   }
 
-  filtrar(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
   exportExcel(){
     // this.excelService.exportExcel(this.dataSource.data, 'times');
 
-    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.select.nativeElement);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Times');
 

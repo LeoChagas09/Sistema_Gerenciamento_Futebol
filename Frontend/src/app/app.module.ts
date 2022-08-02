@@ -18,6 +18,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatSortModule } from '@angular/material/sort';
+import {MatListModule} from '@angular/material/list';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,6 +40,7 @@ import { JogosComponent } from './components/jogos/jogos.component';
 
 import localePT from '@angular/common/locales/pt';
 import { ExporterService } from './services/Export/exporter.service';
+import { ConsultarTimesComponent } from './components/time/consultar-times/consultar-times.component';
 
 
 registerLocaleData(localePT);
@@ -57,6 +59,7 @@ registerLocaleData(localePT);
     JogosComponent,
     ListarTimesComponent,
     CriarTimesComponent,
+    ConsultarTimesComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ registerLocaleData(localePT);
     NgToastModule,
     MatPaginatorModule,
     MatTooltipModule,
-    MatSortModule
+    MatSortModule,
+    MatListModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br'},

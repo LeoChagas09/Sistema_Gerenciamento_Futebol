@@ -78,24 +78,12 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy, AfterViewI
     );
   }
 
-  RedirectTimes(status: number, id: number) {
-    if(status == 0) {
-      this.router.navigate([`/times/campeonato/${id}`]);
-    } else if(status == 1) {
-      this.toast.error({detail: 'Times já cadastrados', summary: 'Não é possível cadastrar mais times' , duration: 5000});
-    }
+  RedirectTimes( id: number) {
+    this.router.navigate([`/times/campeonato/${id}`]);
   }
 
-  RedirectJogo(status: number) {
-    if(status == 0) {
-      this.toast.error({detail: 'Falta finalizar os cadastros de times', summary: 'Não é possível acessar os jogos' , duration: 5000});
-    } else if(status == 1 || status == 2) {
-      this.router.navigate(['/jogos']);
-    }
-  }
-
-  doFilter = (value: string) => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  RedirectJogo() {
+    this.router.navigate(['/jogos']);
   }
 
   filtrar(event: Event) {
