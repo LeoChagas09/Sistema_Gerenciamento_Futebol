@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Subscription } from 'rxjs';
-import { Campeonato, CampeonatoTeste } from 'src/app/interfaces';
+import { Campeonato } from 'src/app/interfaces';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
 import { CriarCampeonatosComponent } from '../criar-campeonatos/criar-campeonatos.component';
@@ -78,12 +78,12 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy, AfterViewI
     );
   }
 
-  RedirectTimes( id: number) {
+  RedirectTimes(id: number) {
     this.router.navigate([`/times/campeonato/${id}`]);
   }
 
-  RedirectJogo() {
-    this.router.navigate(['/jogos']);
+  RedirectJogo(id: number) {
+    this.router.navigate([`/jogos/campeonato/${id}`]);
   }
 
   filtrar(event: Event) {
@@ -92,13 +92,13 @@ export class ListarCampeonatosComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   exportExcel(){
-    this.excelService.exportExcel(this.dataSource.data, 'campeonatos');
+    // this.excelService.exportExcel(this.dataSource.data, 'campeonatos');
 
-    // const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
-    // const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    // XLSX.utils.book_append_sheet(wb, ws, 'Campeonatos');
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Campeonatos');
 
-    // XLSX.writeFile(wb, 'Campeonatos.xlsx');
+    XLSX.writeFile(wb, 'Campeonatos.xlsx');
   }
 
 }

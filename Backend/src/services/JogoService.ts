@@ -27,8 +27,8 @@ export class JogoService {
     const jogo = await prisma.jogo.findMany({
       include: {
         campeonato: true,
-        times_jogo_id_time_1_fkTotimes: true,
-        times_jogo_id_time_2_fkTotimes: true,
+        times_jogo_id_time_1_fk: true,
+        times_jogo_id_time_2_fk: true,
       },
     });
 

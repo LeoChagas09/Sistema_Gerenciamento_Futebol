@@ -38,8 +38,8 @@ model jogo {
   id_time_2_fk                   Int
   local_jogo                     String           @db.VarChar(200)
   campeonato                     campeonato       @relation(fields: [id_campeonato_fk], references: [id_campeonato], onDelete: NoAction, onUpdate: NoAction, map: "id_campeonato_fk")
-  times_jogo_id_time_1_fkTotimes times            @relation("jogo_id_time_1_fkTotimes", fields: [id_time_1_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_1_fk")
-  times_jogo_id_time_2_fkTotimes times            @relation("jogo_id_time_2_fkTotimes", fields: [id_time_2_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_2_fk")
+  times_jogo_id_time_1_fk times            @relation("jogo_id_time_1_fk", fields: [id_time_1_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_1_fk")
+  times_jogo_id_time_2_fk times            @relation("jogo_id_time_2_fk", fields: [id_time_2_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_2_fk")
   jogo_resultado                 jogo_resultado[]
 }
 
@@ -53,11 +53,9 @@ model jogo_resultado {
 
 model times {
   id_time                       Int              @id(map: "id_time_pk") @default(autoincrement())
-  id_usuario_fk                 Int
-  id_campeonato                 Int
   nome_time                     String           @db.VarChar(200)
-  jogo_jogo_id_time_1_fkTotimes jogo[]           @relation("jogo_id_time_1_fkTotimes")
-  jogo_jogo_id_time_2_fkTotimes jogo[]           @relation("jogo_id_time_2_fkTotimes")
+  jogo_id_time_1_fk jogo[]           @relation("jogo_id_time_1_fk")
+  jogo_id_time_2_fk jogo[]           @relation("jogo_id_time_2_fk")
   jogo_resultado                jogo_resultado[]
 }
 

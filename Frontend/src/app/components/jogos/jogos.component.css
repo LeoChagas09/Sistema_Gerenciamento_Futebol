@@ -1,0 +1,36 @@
+.container {
+  height: 30.7rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: green;
+  padding-top: 15px;
+
+}
+
+.button {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+}
+
+.btn {
+  width: 13rem;
+  background-color: green;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    height: 51.5rem;
+  }
+}
+
+@media screen and (min-height: 969px)  {
+  .container {
+    height: 51.5rem;
+  }
+}

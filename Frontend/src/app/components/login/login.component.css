@@ -13,8 +13,19 @@
     margin-top: -50px;
   }
 }
+@media screen and (min-height: 969px) {
+  .login{
+    display: flex;
+    justify-content: center;
+    height: 51.5rem;
+    width: 100%;
+    background-image: url(https://i0.wp.com/scienceplay.com.br/wp-content/uploads/2021/09/cafeina-para-jogar-futebol.jpg?fit=1920%2C1122&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1920px)  {
   .login{
     display: flex;
     justify-content: center;
@@ -67,7 +78,6 @@
   display: flex;
   justify-content: center;
   color: green;
-
 }
 
 .input-field {

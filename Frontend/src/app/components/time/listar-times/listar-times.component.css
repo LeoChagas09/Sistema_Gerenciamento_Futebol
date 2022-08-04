@@ -88,8 +88,12 @@
 
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (max-width: 1920px) and (min-height: 969px) {
   .tabela {
     margin-bottom: 27.69rem;
+  }
+
+  .action {
+    margin-bottom: 1.99rem;
   }
 }

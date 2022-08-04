@@ -34,7 +34,7 @@
   margin-bottom: 5rem;
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (max-width: 1920px) and (min-height: 969px) {
   .btn {
     margin-bottom: 17.99rem;
   }

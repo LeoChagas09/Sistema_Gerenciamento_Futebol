@@ -20,7 +20,6 @@ import { HomeComponent } from './components/home/home.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { CriarCampeonatosComponent } from './components/campeonato/criar-campeonatos/criar-campeonatos.component';
 import { ListarTimesComponent } from './components/time/listar-times/listar-times.component';
-import { CriarTimesComponent } from './components/time/criar-times/criar-times.component';
 import { ExporterService } from './services/Export/exporter.service';
 import { ConsultarTimesComponent } from './components/time/consultar-times/consultar-times.component';
 import { JogosComponent } from './components/jogos/jogos.component';
@@ -46,7 +45,6 @@ registerLocaleData(localePT);
     CriarCampeonatosComponent,
     JogosComponent,
     ListarTimesComponent,
-    CriarTimesComponent,
     ConsultarTimesComponent,
   ],
   imports: [

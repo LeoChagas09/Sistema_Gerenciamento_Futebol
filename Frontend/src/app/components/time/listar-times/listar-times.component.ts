@@ -5,7 +5,6 @@ import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
 import { ExporterService } from 'src/app/services/Export/exporter.service';
-import { CriarTimesComponent } from '../criar-times/criar-times.component';
 import * as XLSX from 'xlsx';
 import { TimesService } from 'src/app/services/times/times.service';
 import { Time, Times } from 'src/app/interfaces';
@@ -74,39 +73,14 @@ export class ListarTimesComponent implements OnInit {
     }));
   }
 
-  openDialog(): void {
-    const dialog = this.dialog.open(CriarTimesComponent, {
-      disableClose: true,
-      width: '600px',
-      data: {idUser: this.idUser, id: this.id}
-    });
-    dialog.afterClosed().subscribe(result => {
-      if(!result.error) {
-        this.listarTimes();
-      }
-    })
-  }
-
   Finish(id: number) {
     this.campeonatoService.updateCampeonatos(id).subscribe({
       next: retorno => (retorno.campeonato, this.router.navigate(['/campeonatos'])),
     });
   }
 
-
-
   voltar() {
     this.router.navigate(['/campeonatos']);
-  }
-
-  exportExcel(){
-    // this.excelService.exportExcel(this.dataSource.data, 'times');
-
-    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.select.nativeElement);
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Times');
-
-    XLSX.writeFile(wb, 'Times.xlsx');
   }
 
 }

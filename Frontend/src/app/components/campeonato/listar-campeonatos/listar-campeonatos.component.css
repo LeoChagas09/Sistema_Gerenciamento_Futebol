@@ -70,3 +70,9 @@
     margin-bottom: 23.5rem;
   }
 }
+
+@media screen and (min-height: 969px)  {
+  .tabela {
+    margin-bottom: 23.5rem;
+  }
+}

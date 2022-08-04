@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'cadastro', component: CriarContaComponent, canActivate: [GuardAuthService]},
   { path: 'campeonatos', component: ListarCampeonatosComponent, canActivate: [AuthGuardService]},
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuardService]},
-  { path: 'jogos', component: JogosComponent, canActivate: [AuthGuardService]},
+  { path: 'jogos/campeonato/:id', component: JogosComponent, canActivate: [AuthGuardService]},
   { path: 'times', component: ConsultarTimesComponent, canActivate: [AuthGuardService]},
   { path: 'times/campeonato/:id', component: ListarTimesComponent, canActivate: [AuthGuardService]},
   { path: '', redirectTo: '/login', pathMatch: 'full'}

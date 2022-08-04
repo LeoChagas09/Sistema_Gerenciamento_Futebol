@@ -61,7 +61,7 @@
       <ng-container matColumnDef="jogo">
         <th  mat-header-cell *matHeaderCellDef class="botao">Acompanhar Jogos</th>
         <td mat-cell *matCellDef="let element"  class="botao">
-          <button class="button" mat-mini-fab color="warn"  (click)="RedirectJogo()" matTooltip="Acompanhar Jogos">
+          <button class="button" mat-mini-fab color="warn"  (click)="RedirectJogo(element.id_campeonato)" matTooltip="Acompanhar Jogos">
             <mat-icon>tv</mat-icon>
           </button>
         </td>

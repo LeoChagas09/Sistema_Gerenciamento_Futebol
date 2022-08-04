@@ -6,11 +6,11 @@ import { TimesService } from '../services/TimesService';
 export class TimesController {
   async create(req: Request, res: Response) {
     try {
-      const { id_usuario_fk, id_campeonato, nome_time } = req.body;
+      const { nome_time } = req.body;
 
       const service = new TimesService();
 
-      const time = await service.create(id_usuario_fk, id_campeonato, nome_time);
+      const time = await service.create( nome_time);
 
       res.json(time);
 
@@ -36,21 +36,21 @@ export class TimesController {
     }
   }
 
-  async findByUser(req: Request, res: Response) {
-    try {
-      const { id } = req.params;
+  // async findByCampeonato(req: Request, res: Response) {
+  //   try {
+  //     const { id } = req.params;
 
-      const service = new TimesService();
+  //     const service = new TimesService();
 
-      const times = await service.findByCampeonato(Number(id));
+  //     const times = await service.findByCampeonato(Number(id));
 
-      res.json(times);
+  //     res.json(times);
 
-    } catch (error) {
-       return res
-      .status(400)
-      .json(erroHandling(1, 'Erro ao buscar os campeonatos'));
-    }
-  }
+  //   } catch (error) {
+  //      return res
+  //     .status(400)
+  //     .json(erroHandling(1, 'Erro ao buscar os times'));
+  //   }
+  // }
 
 }
