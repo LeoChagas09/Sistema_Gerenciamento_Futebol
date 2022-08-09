@@ -70,6 +70,7 @@ export class ListarTimesComponent implements OnInit {
 
   Salvar() {
     this.timesService.setTimesSelecionados(this.timesSelecionados);
+    this.router.navigate(['/campeonatos']);
   }
 
   voltar() {
