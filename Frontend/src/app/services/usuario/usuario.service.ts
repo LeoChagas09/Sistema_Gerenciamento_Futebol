@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ContaNova, Login, novoUsuario } from 'src/app/interfaces';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 export interface LoginResponseInterface {
   token: string;
@@ -13,7 +13,7 @@ export interface LoginResponseInterface {
 })
 export class UsuarioService {
 
-  baseUrl: string = environment.baseUrl;
+  baseUrl: string = environment.API_NODE;
 
   constructor(private http: HttpClient) { }
 

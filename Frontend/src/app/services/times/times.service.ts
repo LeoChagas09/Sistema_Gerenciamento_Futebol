@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Time, Times } from 'src/app/interfaces';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimesService {
 
-  baseUrl: string = environment.baseUrl;
+  baseUrl: string = environment.API_NODE;
 
 
   times: BehaviorSubject<Time[]> = new BehaviorSubject<Time[]>([]);

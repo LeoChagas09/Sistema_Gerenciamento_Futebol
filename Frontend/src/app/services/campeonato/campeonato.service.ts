@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Campeonato, Campeonatos } from 'src/app/interfaces';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CampeonatoService {
 
-  baseUrl: string = environment.baseUrl;
+  baseUrl: string = environment.API_NODE;
 
   constructor(private http: HttpClient) { }
 
