@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Time, Times } from 'src/app/interfaces';
 import { environment } from 'src/environments/environment';
 
@@ -11,7 +11,11 @@ export class TimesService {
 
   baseUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+
+  times: BehaviorSubject<Time[]> = new BehaviorSubject<Time[]>([]);
+
+  constructor(private http: HttpClient) {
+   }
 
   getTimes():Observable<Time[]>{
     const url = `${this.baseUrl}/times/`
@@ -22,4 +26,9 @@ export class TimesService {
     const url = `${this.baseUrl}/times/`
     return this.http.post<Times>(url, times);
   }
+
+  setTimesSelecionados(times: Time[]) {
+    this.times.next(times);
+  }
+
 }

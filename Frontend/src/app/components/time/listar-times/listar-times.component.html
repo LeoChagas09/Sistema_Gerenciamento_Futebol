@@ -8,9 +8,9 @@
   </div>
 
 
-    <mat-selection-list #shoes (selectionChange)="selectionChange($event.option)" color="primary">
+    <mat-selection-list #times color="primary"  [(ngModel)]="this.timesSelecionados">
       <mat-list-option *ngFor="let element of $search|async" [value]="element"
-      [selected]="shoesControl.value && shoesControl.value?.indexOf(element)>=0">
+      [selected]="timesControl.value && timesControl.value?.indexOf(element)>=0">
         {{element.nome_time}}
       </mat-list-option>
     </mat-selection-list>
@@ -18,7 +18,7 @@
 </div>
 
   <div class="action">
-    <button class="waves-effect waves-light btn" (click)="Finish(id)">Confirmar Seleção</button>
+    <button class="waves-effect waves-light btn" (click)="Salvar()">Confirmar Seleção</button>
     <button class="waves-effect waves-light btn" (click)="this.voltar()">Voltar</button>
   </div>
 

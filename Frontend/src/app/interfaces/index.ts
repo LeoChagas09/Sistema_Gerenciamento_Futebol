@@ -60,13 +60,11 @@ export interface ContaNova {
 
 export interface Time {
   id_time: number;
-  id_usuario_fk: number,
-  id_campeonato: number,
   nome_time: string
 }
 
 export interface Times {
-  time: Time[];
+  times: Time;
 }
 
 export interface Jogo {

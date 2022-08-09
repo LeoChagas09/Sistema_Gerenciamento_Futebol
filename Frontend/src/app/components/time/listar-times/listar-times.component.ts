@@ -8,7 +8,7 @@ import { ExporterService } from 'src/app/services/Export/exporter.service';
 import * as XLSX from 'xlsx';
 import { TimesService } from 'src/app/services/times/times.service';
 import { Time, Times } from 'src/app/interfaces';
-import { debounceTime, of, startWith, Subscription, switchMap } from 'rxjs';
+import { debounceTime, of, startWith, Subscription, switchMap, tap } from 'rxjs';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -24,8 +24,10 @@ export class ListarTimesComponent implements OnInit {
 
   subscriptions: Subscription = new Subscription();
 
+  timesSelecionados: Time[] = [];
+
   buscar = new FormControl();
-  shoesControl = new FormControl();
+  timesControl = new FormControl();
   time: Time[] = [];
 
   $search = this.buscar.valueChanges.pipe(
@@ -40,14 +42,7 @@ export class ListarTimesComponent implements OnInit {
     })
   )
 
-  selectionChange(option: any) {
-    let value = this.shoesControl.value || [];
-    if(option.selected) value.push(option.value);
-    else value = value.filter((x: any) => x != option.value);
-    this.shoesControl.setValue(value);
-  }
-
-  @ViewChild('shoes', { read: ElementRef }) select!: ElementRef;
+  @ViewChild('times', { read: ElementRef }) select!: ElementRef;
 
   constructor(
     public dialog: MatDialog,
@@ -56,13 +51,13 @@ export class ListarTimesComponent implements OnInit {
     private toast: NgToastService,
     private timesService: TimesService,
     private route: ActivatedRoute,
-    private campeonatoService: CampeonatoService,
     private excelService: ExporterService,
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.listarTimes();
+    this.timesService.times.subscribe(times => console.log(times));
   }
 
   listarTimes(){
@@ -73,10 +68,8 @@ export class ListarTimesComponent implements OnInit {
     }));
   }
 
-  Finish(id: number) {
-    this.campeonatoService.updateCampeonatos(id).subscribe({
-      next: retorno => (retorno.campeonato, this.router.navigate(['/campeonatos'])),
-    });
+  Salvar() {
+    this.timesService.setTimesSelecionados(this.timesSelecionados);
   }
 
   voltar() {
