@@ -57,7 +57,6 @@ export class ListarTimesComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.listarTimes();
-    this.timesService.times.subscribe(times => console.log(times));
   }
 
   listarTimes(){
@@ -70,11 +69,11 @@ export class ListarTimesComponent implements OnInit {
 
   Salvar() {
     this.timesService.setTimesSelecionados(this.timesSelecionados);
-    this.router.navigate(['/campeonatos']);
+    this.router.navigate(['campeonatos']);
   }
 
   voltar() {
-    this.router.navigate(['/campeonatos']);
+    this.router.navigate(['campeonatos']);
   }
 
 }
