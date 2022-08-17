@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Time } from 'src/app/interfaces';
 import { TimesService } from 'src/app/services/times/times.service';
+import { CriarJogosComponent } from '../criar-jogos/criar-jogos.component';
 
 interface Jogos {
   time_1: Time,
@@ -18,11 +20,15 @@ export class JogosComponent implements OnInit {
    displayedColumns: string[] = ['time1', 'time2'];
    dataSource:Jogos[] = [];
    _times: Time[] = [];
+   clickedRows = new Set<Jogos>();
+
+   id: any;
 
   constructor(
     private timesService: TimesService,
     private router:Router,
-
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
   ) {
     this.timesService.times.subscribe(times => {
       this._times = times;
@@ -31,6 +37,7 @@ export class JogosComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     if(this.timesService.times.getValue().length <= 0) {
       this.router.navigate(['/campeonatos']);
     }
@@ -72,6 +79,17 @@ export class JogosComponent implements OnInit {
       index = index + 2;
     }
     return jogosCampeonato;
+  }
+
+  clicked() {
+    const dialog = this.dialog.open(CriarJogosComponent, {
+      width: '600px',
+      data: {idCampeonato: this.id}
+    });
+  }
+
+  SalvarJogos() {
+    this.router.navigate([`jogos/campeonato/${this.id}`])
   }
 
 }

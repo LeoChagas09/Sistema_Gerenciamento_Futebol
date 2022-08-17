@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  color: green;
+  padding-top: 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+}
+
+.input-field {
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.tabela {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  width: 100%;
+  margin-bottom: 6.89rem;
+}
+
+.botao {
+  text-align: center;
+}
+
+.button {
+  background-color: green;
+}
+
+.mat-elevation-z8 {
+  width: 83rem;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media(max-width: 600px) {
+  .mobile-label {
+    display: flex;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-cell {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 24px;
+  }
+
+}
+
+@media screen and (min-width: 1920px) {
+  .tabela {
+    margin-bottom: 23.5rem;
+  }
+}
+
+@media screen and (min-height: 969px)  {
+  .tabela {
+    margin-bottom: 23.5rem;
+  }
+}

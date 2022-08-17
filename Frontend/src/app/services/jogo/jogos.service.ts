@@ -11,8 +11,8 @@ export class JogosService {
 
   constructor(private http: HttpClient) { }
 
-  getJogos():Observable<Jogo[]>{
-    const url = `${this.baseUrl}/jogo/`
+  getJogos(id: number):Observable<Jogo[]>{
+    const url = `${this.baseUrl}/jogo/campeonato/${id}`;
     return this.http.get<Jogo[]>(url)
   }
 

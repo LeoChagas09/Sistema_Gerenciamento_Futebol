@@ -10,4 +10,4 @@ CampeonatoRoutes.get('/', campeonatoController.find);
 
 CampeonatoRoutes.get('/user/:id', campeonatoController.findByUser);
 
-CampeonatoRoutes.get('/times/:id', campeonatoController.updateStatusTime);
+// CampeonatoRoutes.get('/times/:id', campeonatoController.updateStatusTime);

@@ -67,9 +67,9 @@ export class ListarTimesComponent implements OnInit {
     }));
   }
 
-  Salvar() {
+  Salvar(id: number) {
     this.timesService.setTimesSelecionados(this.timesSelecionados);
-    this.router.navigate(['campeonatos']);
+    this.router.navigate([`/jogosSorteio/campeonato/${this.id}`]);
   }
 
   voltar() {

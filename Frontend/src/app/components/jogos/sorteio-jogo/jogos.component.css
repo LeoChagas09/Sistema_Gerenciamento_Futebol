@@ -40,3 +40,16 @@
 .mat-elevation-z8 {
   width: 60rem;
 }
+
+.salvar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.jogos {
+  width: 13rem;
+  background-color: green;
+  border-radius: 10px;
+  margin-bottom: 5rem;
+}

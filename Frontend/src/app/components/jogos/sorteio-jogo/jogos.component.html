@@ -1,8 +1,8 @@
 <div class="container">
   <div class="header">
-    <h4 class="titulo"> Jogos </h4>
+    <h4 class="titulo"> Sorteio dos Jogos </h4>
     <div class="button">
-      <button class="waves-effect waves-light btn" (click)="this.sortear()">Sortear Jogos</button>
+      <button class="waves-effect waves-light btn" (click)="this.sortear()">Sortear</button>
     </div>
   </div>
 </div>
@@ -23,8 +23,16 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row
+      (click)="clicked()"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
     </table>
+</div>
+
+<div class="salvar">
+  <button class="waves-effect waves-light btn jogos" (click)="SalvarJogos()">Salvar</button>
 </div>
 
 

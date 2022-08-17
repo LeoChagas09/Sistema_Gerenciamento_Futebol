@@ -1,0 +1,36 @@
+<div mat-dialog-content>
+  <div class="container">
+    <h4 mat-dialog-title> Novo Jogo </h4>
+
+    <form [formGroup]="this.form_jogo" class="row" >
+      <div class="row">
+
+        <div appearance="fill">
+          <label>Local do Jogo de Ida</label>
+          <input name="nome" formControlName="local_ida" placeholder="Local do Jogo de Ida" type="text" class="validate">
+        </div>
+
+        <div appearance="fill">
+          <label>Data do Jogo de Ida</label>
+          <input name="data" formControlName="data_ida" placeholder="Início Campeonato" type="date" class="validate">
+        </div>
+
+        <div appearance="fill">
+          <label>Local do Jogo de Volta</label>
+          <input name="nome" formControlName="local_volta" placeholder="Local do Jogo de Volta" type="text" class="validate">
+        </div>
+
+        <div appearance="fill">
+          <label>Data do Jogo de Volta</label>
+          <input name="data" formControlName="data_volta" placeholder="Final do Campeonato" type="date" class="validate">
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div mat-dialog-actions class="button">
+    <button id="refresh" class="waves-effect waves-light btn" [disabled]="this.form_jogo.invalid" (click)="this.criarJogo()">Criar Jogo</button>
+    <button id="refresh" class="waves-effect waves-light btn"(click)="this.fechar()">Voltar</button>
+</div>

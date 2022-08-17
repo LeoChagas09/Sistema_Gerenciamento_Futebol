@@ -1,10 +1,10 @@
 import { Prisma } from "@prisma/client";
-import { erroHandling } from "../model/Errorhandling";
+// import { erroHandling } from "../model/Errorhandling";
 import { prisma } from "../prisma";
-import { TimesService } from "./TimesService";
+// import { TimesService } from "./TimesService";
 
-export type StatusJogo = 0 | 1 | 2; // 0 = Não Iniciado, 1 = Em Andamento e 2 = Jogos Finalizados
-export type StatusTime = 0 | 1; // 0 = Em Andamento, 1 = Times Cadastrados
+// export type StatusJogo = 0 | 1 | 2; // 0 = Não Iniciado, 1 = Em Andamento e 2 = Jogos Finalizados
+// export type StatusTime = 0 | 1; // 0 = Em Andamento, 1 = Times Cadastrados
 
 export class CampeonatoService {
   async create(
@@ -13,8 +13,6 @@ export class CampeonatoService {
     nome_campeonato: string,
     data_inicio_campeonato: string,
     data_final_campeonato: string,
-    status_jogo: StatusJogo,
-    status_times: StatusTime,
     ) {
       const campeonato =
       await prisma.campeonato.create<Prisma.campeonatoCreateArgs>({
@@ -24,8 +22,6 @@ export class CampeonatoService {
           nome_campeonato,
           data_inicio_campeonato: new Date(data_inicio_campeonato),
           data_final_campeonato: new Date(data_final_campeonato),
-          status_jogo,
-          status_times
         },
       })
 
@@ -61,34 +57,34 @@ export class CampeonatoService {
   }
 
 
-  async updateStatusTime(id: number) {
+  // async updateStatusTime(id: number) {
 
-    const service = new TimesService();
+  //   const service = new TimesService();
 
-    const times = await service.findByCampeonato(id);
+  //   const times = await service.findByCampeonato(id);
 
-    let quantTimes: number = 0;
+  //   let quantTimes: number = 0;
 
-    times.forEach(times => {
-      quantTimes++;
-    })
+  //   times.forEach(times => {
+  //     quantTimes++;
+  //   })
 
-    if(quantTimes % 2 == 0 && quantTimes >= 2) {
+  //   if(quantTimes % 2 == 0 && quantTimes >= 2) {
 
-      const campeonato = await prisma.campeonato.update({
-        where: {
-          id_campeonato: id
-        },
-        data: {
-          status_times: 1,
-          status_jogo: 1
-        }
-      });
+  //     const campeonato = await prisma.campeonato.update({
+  //       where: {
+  //         id_campeonato: id
+  //       },
+  //       data: {
+  //         status_times: 1,
+  //         status_jogo: 1
+  //       }
+  //     });
 
-      return campeonato;
-    } else {
-      throw erroHandling(1, 'Erro por conta de ter times impares');
-    }
+  //     return campeonato;
+  //   } else {
+  //     throw erroHandling(1, 'Erro por conta de ter times impares');
+  //   }
 
-  }
+  // }
 }

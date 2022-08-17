@@ -6,3 +6,4 @@ const jogoController = new JogoController();
 
 JogoRoutes.post('/', jogoController.createJogo);
 JogoRoutes.get('/', jogoController.find);
+JogoRoutes.get('/campeonato/:id', jogoController.findByCampeonato);

@@ -70,10 +70,12 @@ export interface Times {
 export interface Jogo {
   id_jogo: number;
   id_campeonato_fk: number
-  data_jogo: string;
+  data_ida: string;
   id_time_1_fk: number;
   id_time_2_fk: number;
-  local_jogo: string;
+  local_ida: string;
+  data_volta: string;
+  local_volta: string;
 }
 
 export interface Jogos {

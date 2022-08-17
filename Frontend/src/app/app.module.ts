@@ -22,10 +22,13 @@ import { CriarCampeonatosComponent } from './components/campeonato/criar-campeon
 import { ListarTimesComponent } from './components/time/listar-times/listar-times.component';
 import { ExporterService } from './services/Export/exporter.service';
 import { ConsultarTimesComponent } from './components/time/consultar-times/consultar-times.component';
-import { JogosComponent } from './components/jogos/jogos.component';
 
 
 import localePT from '@angular/common/locales/pt';
+import { CriarJogosComponent } from './components/jogos/criar-jogos/criar-jogos.component';
+import { JogosComponent } from './components/jogos/sorteio-jogo/jogos.component';
+import { JogosService } from './services/jogo/jogos.service';
+import { ListarJogosComponent } from './components/jogos/listar-jogos/listar-jogos.component';
 
 
 
@@ -43,9 +46,11 @@ registerLocaleData(localePT);
     HomeComponent,
     FeedbackComponent,
     CriarCampeonatosComponent,
-    JogosComponent,
     ListarTimesComponent,
     ConsultarTimesComponent,
+    CriarJogosComponent,
+    JogosComponent,
+    ListarJogosComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,8 @@ registerLocaleData(localePT);
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br'},
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptService, multi: true },
-    ExporterService
+    ExporterService,
+    JogosService
 
   ],
   bootstrap: [AppComponent]
