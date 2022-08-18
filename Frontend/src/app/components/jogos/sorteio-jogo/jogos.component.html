@@ -2,7 +2,7 @@
   <div class="header">
     <h4 class="titulo"> Sorteio dos Jogos </h4>
     <div class="button">
-      <button class="waves-effect waves-light btn" (click)="this.sortear()">Sortear</button>
+      <button class="waves-effect waves-light btn" onclick="this.disabled = true;" (click)="this.sortear()">Sortear</button>
     </div>
   </div>
 </div>
@@ -23,8 +23,9 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row
-      (click)="clicked()"
+      <tr matRipple mat-row
+
+      (click)="[clicked(), clickedRows.add(row)]"
       [class.demo-row-is-clicked]="clickedRows.has(row)"
       *matRowDef="let row; columns: displayedColumns;"
       ></tr>

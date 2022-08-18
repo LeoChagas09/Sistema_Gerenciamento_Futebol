@@ -62,13 +62,13 @@ export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   exportExcel(){
-    // this.excelService.exportExcel(this.dataSource.data, 'campeonatos');
+    // this.excelService.exportExcel(this.dataSource.data, 'jogos');
 
     const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Campeonatos');
+    XLSX.utils.book_append_sheet(wb, ws, 'Jogos');
 
-    XLSX.writeFile(wb, 'Campeonatos.xlsx');
+    XLSX.writeFile(wb, 'Jogos.xlsx');
   }
 
 }

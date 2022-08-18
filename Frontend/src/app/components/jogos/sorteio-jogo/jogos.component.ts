@@ -84,7 +84,11 @@ export class JogosComponent implements OnInit {
   clicked() {
     const dialog = this.dialog.open(CriarJogosComponent, {
       width: '600px',
-      data: {idCampeonato: this.id}
+      data: {
+        idCampeonato: this.id,
+        id_time_1_fk: this.clickedRows.forEach(time1 => console.log(time1.time_1.id_time))
+        // id_time_2_fk: this.dataSource.filter(time2 => console.log(time2.time_2.id_time))
+      },
     });
   }
 
