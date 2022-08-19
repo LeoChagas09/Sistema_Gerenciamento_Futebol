@@ -18,15 +18,14 @@
 
       <ng-container matColumnDef="time2">
         <th mat-header-cell *matHeaderCellDef class="center-tabela"></th>
-        <td mat-cell *matCellDef="let element" class="center-tabela">
+        <td  mat-cell *matCellDef="let element" class="center-tabela">
           {{element.time_2.nome_time}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr matRipple mat-row
-
-      (click)="[clicked(), clickedRows.add(row)]"
-      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      <tr mat-row
+      (click)="[clickedRows.add(row), clicked()]"
+      [class.demo-row-is-clicked]="clickedRows.clear()"
       *matRowDef="let row; columns: displayedColumns;"
       ></tr>
     </table>

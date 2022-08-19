@@ -40,6 +40,10 @@ export class CriarJogosComponent implements OnInit {
     const formValue : Jogo = this.form_jogo.getRawValue();
 
     formValue.id_campeonato_fk = this.data.idCampeonato;
+    formValue.id_time_1_fk = this.data.id_time_1;
+    formValue.id_time_2_fk = this.data.id_time_2;
+
+    console.log(formValue);
 
     this.jogosService.postJogos(formValue).subscribe({
       next: retorno => (retorno.jogo),

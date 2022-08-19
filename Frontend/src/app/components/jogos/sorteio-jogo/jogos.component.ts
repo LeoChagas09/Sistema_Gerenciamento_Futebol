@@ -1,5 +1,7 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Time } from 'src/app/interfaces';
 import { TimesService } from 'src/app/services/times/times.service';
@@ -18,9 +20,9 @@ interface Jogos {
 export class JogosComponent implements OnInit {
 
    displayedColumns: string[] = ['time1', 'time2'];
-   dataSource:Jogos[] = [];
+   dataSource: Jogos[] = [];
    _times: Time[] = [];
-   clickedRows = new Set<Jogos>();
+   clickedRows = new Set<Jogos>(this.dataSource);
 
    id: any;
 
@@ -82,12 +84,14 @@ export class JogosComponent implements OnInit {
   }
 
   clicked() {
-    const dialog = this.dialog.open(CriarJogosComponent, {
+    const [[idTime1, idTime2]] = Array.from(this.clickedRows).map(time => [time.time_1.id_time, time.time_2.id_time]);
+
+     this.dialog.open(CriarJogosComponent, {
       width: '600px',
       data: {
-        idCampeonato: this.id,
-        id_time_1_fk: this.clickedRows.forEach(time1 => console.log(time1.time_1.id_time))
-        // id_time_2_fk: this.dataSource.filter(time2 => console.log(time2.time_2.id_time))
+        idCampeonato: Number(this.id),
+        id_time_1: idTime1,
+        id_time_2: idTime2
       },
     });
   }
