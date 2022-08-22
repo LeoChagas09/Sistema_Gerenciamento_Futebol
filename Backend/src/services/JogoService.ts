@@ -9,7 +9,7 @@ export class JogoService {
     id_time_2_fk: number,
     local_ida: string,
     data_volta: Date,
-    local_volta: string
+    local_volta: string,
     ){
 
     const jogos = await prisma.jogo.create({
@@ -20,8 +20,8 @@ export class JogoService {
         id_time_2_fk,
         local_ida,
         data_volta: new Date(data_volta),
-        local_volta
-      }
+        local_volta,
+      },
     });
 
     return jogos;
@@ -33,6 +33,7 @@ export class JogoService {
         campeonato: true,
         time_1: true,
         time_2: true,
+        jogo_resultado: true
       },
     });
 
@@ -45,6 +46,7 @@ export class JogoService {
         campeonato: true,
         time_1: true,
         time_2: true,
+        jogo_resultado: true,
       },
       where: {
         id_campeonato_fk: id
@@ -54,14 +56,21 @@ export class JogoService {
     return jogo;
   }
 
-  async createJogoResultado(id_jogo_fk: number, id_time_fk: number){
+  async createJogoResultado(id_jogo_fk: number, placar_time_1: number, placar_time_2: number){
 
     const jogoResultado = await prisma.jogo_resultado.create({
       data: {
         id_jogo_fk,
-        id_time_fk,
+        placar_time_1,
+        placar_time_2,
       },
     });
+
+    return jogoResultado;
+  }
+
+  async findJogoResultado() {
+    const jogoResultado = await prisma.jogo_resultado.findMany();
 
     return jogoResultado;
   }

@@ -29,34 +29,33 @@ model feedback {
 }
 
 model jogo {
-  id_jogo                 Int              @id(map: "id_jogo_pk") @default(autoincrement())
-  id_campeonato_fk        Int
-  data_ida                DateTime         @db.Date
-  id_time_1_fk            Int
-  id_time_2_fk            Int
-  local_ida               String           @db.VarChar(200)
-  data_volta              DateTime         @db.Date
-  local_volta             String           @db.VarChar(200)
-  campeonato              campeonato       @relation(fields: [id_campeonato_fk], references: [id_campeonato], onDelete: NoAction, onUpdate: NoAction, map: "id_campeonato_fk")
-  time_1 times            @relation("jogo_id_time_1_fk", fields: [id_time_1_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_1_fk")
-  time_2 times            @relation("jogo_id_time_2_fk", fields: [id_time_2_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_2_fk")
-  jogo_resultado          jogo_resultado[]
+  id_jogo          Int              @id(map: "id_jogo_pk") @default(autoincrement())
+  id_campeonato_fk Int
+  data_ida         DateTime         @db.Date
+  id_time_1_fk     Int
+  id_time_2_fk     Int
+  local_ida        String           @db.VarChar(200)
+  data_volta       DateTime         @db.Date
+  local_volta      String           @db.VarChar(200)
+  campeonato       campeonato       @relation(fields: [id_campeonato_fk], references: [id_campeonato], onDelete: NoAction, onUpdate: NoAction, map: "id_campeonato_fk")
+  time_1           times            @relation("jogo_id_time_1_fk", fields: [id_time_1_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_1_fk")
+  time_2           times            @relation("jogo_id_time_2_fk", fields: [id_time_2_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_2_fk")
+  jogo_resultado   jogo_resultado[]
 }
 
 model jogo_resultado {
-  id_jogo_resultado Int   @id(map: "id_jogo_resultado_pk") @default(autoincrement())
+  id_jogo_resultado Int  @id(map: "id_jogo_resultado_pk") @default(autoincrement())
   id_jogo_fk        Int
-  id_time_fk        Int
-  jogo              jogo  @relation(fields: [id_jogo_fk], references: [id_jogo], onDelete: NoAction, onUpdate: NoAction, map: "id_jogo_fk")
-  times             times @relation(fields: [id_time_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_fk")
+  placar_time_1     Int
+  placar_time_2     Int
+  jogo              jogo @relation(fields: [id_jogo_fk], references: [id_jogo], onDelete: NoAction, onUpdate: NoAction, map: "id_jogo_fk")
 }
 
 model times {
-  id_time           Int              @id(map: "id_time_pk") @default(autoincrement())
-  nome_time         String           @db.VarChar(200)
-  jogo_id_time_1_fk jogo[]           @relation("jogo_id_time_1_fk")
-  jogo_id_time_2_fk jogo[]           @relation("jogo_id_time_2_fk")
-  jogo_resultado    jogo_resultado[]
+  id_time           Int    @id(map: "id_time_pk") @default(autoincrement())
+  nome_time         String @db.VarChar(200)
+  jogo_id_time_1_fk jogo[] @relation("jogo_id_time_1_fk")
+  jogo_id_time_2_fk jogo[] @relation("jogo_id_time_2_fk")
 }
 
 model tipo_campeonato {

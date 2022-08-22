@@ -8,9 +8,9 @@
     </div>
   </div>
 
-    <div class="input-field">
-      <input type="text" placeholder="Pesquisar Colunas" class="validate" (keyup)="filtrar($event)">
-    </div>
+  <div class="input-field">
+    <input type="text" placeholder="Pesquisar Colunas" class="validate" (keyup)="filtrar($event)">
+  </div>
 
 </div>
 
@@ -23,6 +23,20 @@
         <td mat-cell *matCellDef="let element">
           <span class="mobile-label"> </span>
           {{element.time_1.nome_time}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="placarTime1">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+        <td mat-cell *matCellDef="let element" class="placarTime1">
+          <span class="mobile-label"> </span>
+          {{ 0 && element.jogo_resultado[0].placar_time_1 }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="placarTime2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+        <td mat-cell *matCellDef="let element" class="placarTime2">
+          <span class="mobile-label"> </span>
+          {{ 0 && element.jogo_resultado[0].placar_time_2}} </td>
       </ng-container>
 
       <ng-container  matColumnDef="time2">
@@ -58,6 +72,15 @@
         <td mat-cell *matCellDef="let element">
           <span class="mobile-label">Local de Volta: </span>
           {{ element.local_volta }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="resultado">
+        <th  mat-header-cell *matHeaderCellDef class="botao"> Definir Resultado</th>
+        <td  mat-cell *matCellDef="let element" class="botao">
+          <button class="button" mat-mini-fab color="warn" (click)="criarResultado(element.id_jogo)" matTooltip="Definir Resultado">
+            <mat-icon>add_to_queue</mat-icon>
+          </button>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

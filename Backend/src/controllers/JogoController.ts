@@ -55,11 +55,11 @@ export class JogoController {
 
   async createJogoResultado(req: Request, res: Response){
     try {
-      const { id_jogo_fk, id_time_fk } = req.body;
+      const { id_jogo_fk, placar_time_1, placar_time_2 } = req.body;
 
       const service = new JogoService();
 
-      const jogoResultado = service.createJogoResultado(id_jogo_fk, id_time_fk);
+      const jogoResultado = service.createJogoResultado(id_jogo_fk, placar_time_1, placar_time_2);
 
       res.json(jogoResultado);
     } catch (error) {
@@ -69,4 +69,18 @@ export class JogoController {
     }
   }
 
+  async findJogoResultado(req: Request, res: Response) {
+    try {
+      const service = new JogoService();
+
+      const jogo = await service.findJogoResultado();
+
+      res.json(jogo);
+
+    } catch (error) {
+       return res
+      .status(400)
+      .json(erroHandling(1, 'Erro ao buscar os campeonatos'));
+    }
+  }
 }

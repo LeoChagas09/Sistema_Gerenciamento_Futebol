@@ -1,0 +1,27 @@
+<div mat-dialog-content>
+  <div class="container">
+    <h4 mat-dialog-title> Resultado dos Jogos </h4>
+
+    <form [formGroup]="this.form_resultado_jogo" class="row" >
+      <div class="row">
+
+        <div appearance="fill">
+          <label>Placar Time Casa</label>
+          <input name="placar_time_1" formControlName="placar_time_1" placeholder="Placar Time Casa" type="number" class="validate">
+        </div>
+
+        <div appearance="fill">
+          <label>Placar Time Fora</label>
+          <input name="placar_time_2" formControlName="placar_time_2" placeholder="Placar Time Fora" type="number" class="validate">
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div mat-dialog-actions class="button">
+    <button id="refresh" class="waves-effect waves-light btn" [disabled]="this.form_resultado_jogo.invalid" (click)="this.criarResultado()">Criar Resultado</button>
+    <button id="refresh" class="waves-effect waves-light btn"(click)="this.fechar()">Voltar</button>
+</div>
+

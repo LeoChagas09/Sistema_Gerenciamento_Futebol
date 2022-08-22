@@ -29,6 +29,7 @@ import { CriarJogosComponent } from './components/jogos/criar-jogos/criar-jogos.
 import { JogosComponent } from './components/jogos/sorteio-jogo/jogos.component';
 import { JogosService } from './services/jogo/jogos.service';
 import { ListarJogosComponent } from './components/jogos/listar-jogos/listar-jogos.component';
+import { CriarResultadoJogoComponent } from './components/jogos/criar-resultado-jogo/criar-resultado-jogo.component';
 
 
 
@@ -50,7 +51,8 @@ registerLocaleData(localePT);
     ConsultarTimesComponent,
     CriarJogosComponent,
     JogosComponent,
-    ListarJogosComponent
+    ListarJogosComponent,
+    CriarResultadoJogoComponent
   ],
   imports: [
     BrowserModule,

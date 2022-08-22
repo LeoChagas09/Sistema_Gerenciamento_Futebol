@@ -47,6 +47,16 @@
   display: none;
 }
 
+.placarTime1 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.placarTime2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 @media(max-width: 600px) {
   .mobile-label {
     display: flex;

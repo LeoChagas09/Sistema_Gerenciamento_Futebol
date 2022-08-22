@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Jogo, Jogos } from 'src/app/interfaces';
+import { Jogo, jogoResultado, Jogos, jogosResultado } from 'src/app/interfaces';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -19,6 +19,16 @@ export class JogosService {
   postJogos(jogos: Jogo): Observable<Jogos> {
     const url = `${this.baseUrl}/jogo/`
     return this.http.post<Jogos>(url, jogos);
+  }
+
+  postJogoResultado(jogoResultado: jogoResultado): Observable<jogosResultado> {
+    const url = `${this.baseUrl}/jogoResultado/`
+    return this.http.post<jogosResultado>(url, jogoResultado);
+  }
+
+  getJogoResultado(): Observable<jogoResultado[]> {
+    const url = `${this.baseUrl}/jogoResultado/`
+    return this.http.get<jogoResultado[]>(url);
   }
 
 }

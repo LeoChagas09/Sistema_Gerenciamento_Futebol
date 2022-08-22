@@ -5,3 +5,4 @@ export const JogoResultadoRoutes = Router();
 const jogoController = new JogoController();
 
 JogoResultadoRoutes.post('/', jogoController.createJogoResultado);
+JogoResultadoRoutes.get('/', jogoController.findJogoResultado);

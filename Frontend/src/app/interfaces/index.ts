@@ -81,3 +81,14 @@ export interface Jogo {
 export interface Jogos {
   jogo: Jogo[];
 }
+
+export interface jogoResultado {
+  id_jogo_resultado: number;
+  id_jogo_fk: number;
+  placar_time_1: string;
+  placar_time_2: string;
+}
+
+export interface jogosResultado {
+  jogoResultado: jogoResultado[];
+}
