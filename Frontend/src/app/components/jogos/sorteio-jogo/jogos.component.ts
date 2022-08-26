@@ -19,10 +19,10 @@ interface Jogos {
 
 export class JogosComponent implements OnInit {
 
-   displayedColumns: string[] = ['time1', 'time2'];
+   displayedColumns: string[] = ['time1','x', 'time2'];
    dataSource: Jogos[] = [];
    _times: Time[] = [];
-   clickedRows = new Set<Jogos>(this.dataSource);
+   clickedRows = new Set<Jogos>();
 
    id: any;
 
@@ -55,6 +55,7 @@ export class JogosComponent implements OnInit {
       const index = this.sortNumber(tamanhoMaximoArray, arrayEmbaralhado);
       arrayEmbaralhado[index] = time;
     })
+
 
     this.dataSource = this.montarTimes(arrayEmbaralhado);
   }

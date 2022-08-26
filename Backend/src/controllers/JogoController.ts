@@ -59,7 +59,7 @@ export class JogoController {
 
       const service = new JogoService();
 
-      const jogoResultado = service.createJogoResultado(id_jogo_fk, placar_time_1, placar_time_2);
+      const jogoResultado = service.updateJogoResultado(id_jogo_fk, placar_time_1, placar_time_2);
 
       res.json(jogoResultado);
     } catch (error) {

@@ -12,20 +12,26 @@
 
       <ng-container matColumnDef="time1">
         <th mat-header-cell *matHeaderCellDef class="center-tabela"></th>
-        <td mat-cell *matCellDef="let element" class="center-tabela">
+        <td width="40%" mat-cell *matCellDef="let element" class="center-tabela">
          {{element.time_1.nome_time}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="x">
+        <th mat-header-cell *matHeaderCellDef class="center"></th>
+        <td width="20%" mat-cell *matCellDef="let element" class="center">
+         X</td>
       </ng-container>
 
       <ng-container matColumnDef="time2">
         <th mat-header-cell *matHeaderCellDef class="center-tabela"></th>
-        <td  mat-cell *matCellDef="let element" class="center-tabela">
+        <td width="40%"  mat-cell *matCellDef="let element" class="center-tabela">
           {{element.time_2.nome_time}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row
       (click)="[clickedRows.add(row), clicked()]"
-      [class.demo-row-is-clicked]="clickedRows.clear()"
+      [class.demo-row-is-clicked]="[clickedRows.clear()]"
       *matRowDef="let row; columns: displayedColumns;"
       ></tr>
     </table>

@@ -58,6 +58,7 @@ export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
         error: erro => (console.error(erro)),
       }),
     );
+    console.log(this.dataSource);
   }
 
   filtrar(event: Event) {

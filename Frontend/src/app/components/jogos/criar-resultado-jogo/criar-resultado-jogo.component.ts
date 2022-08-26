@@ -22,7 +22,7 @@ export class CriarResultadoJogoComponent implements OnInit {
     private jogosService: JogosService,
     private toast: NgToastService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }

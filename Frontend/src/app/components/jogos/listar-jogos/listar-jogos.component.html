@@ -29,14 +29,14 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
         <td mat-cell *matCellDef="let element" class="placarTime1">
           <span class="mobile-label"> </span>
-          {{ 0 && element.jogo_resultado[0].placar_time_1 }} </td>
+          {{ element.jogo_resultado[0].placar_time_1}} </td>
       </ng-container>
 
       <ng-container matColumnDef="placarTime2">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
         <td mat-cell *matCellDef="let element" class="placarTime2">
           <span class="mobile-label"> </span>
-          {{ 0 && element.jogo_resultado[0].placar_time_2}} </td>
+          {{ element.jogo_resultado[0].placar_time_2}} </td>
       </ng-container>
 
       <ng-container  matColumnDef="time2">

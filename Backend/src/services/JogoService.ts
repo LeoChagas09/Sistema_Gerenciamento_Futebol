@@ -12,19 +12,22 @@ export class JogoService {
     local_volta: string,
     ){
 
-    const jogos = await prisma.jogo.create({
-      data: {
-        id_campeonato_fk,
-        data_ida: new Date(data_ida),
-        id_time_1_fk,
-        id_time_2_fk,
-        local_ida,
-        data_volta: new Date(data_volta),
-        local_volta,
-      },
-    });
+      if(data_volta > data_ida) {
 
-    return jogos;
+        const jogos = await prisma.jogo.create({
+          data: {
+            id_campeonato_fk,
+            data_ida: new Date(data_ida),
+            id_time_1_fk,
+            id_time_2_fk,
+            local_ida,
+            data_volta: new Date(data_volta),
+            local_volta,
+          },
+        });
+
+        return jogos;
+      }
   }
 
   async find() {
@@ -56,14 +59,16 @@ export class JogoService {
     return jogo;
   }
 
-  async createJogoResultado(id_jogo_fk: number, placar_time_1: number, placar_time_2: number){
+  async updateJogoResultado(id_jogo_fk: number, placar_time_1: number, placar_time_2: number){
 
-    const jogoResultado = await prisma.jogo_resultado.create({
+    const jogoResultado = await prisma.jogo_resultado.updateMany({
       data: {
-        id_jogo_fk,
-        placar_time_1,
-        placar_time_2,
+        placar_time_1: placar_time_1,
+        placar_time_2: placar_time_2,
       },
+      where: {
+        id_jogo_fk: id_jogo_fk
+      }
     });
 
     return jogoResultado;

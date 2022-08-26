@@ -48,16 +48,23 @@ export class CriarCampeonatosComponent implements OnInit {
 
     formValue.id_usuario_fk = this.data.idUser;
 
-    this.campeonatoService.postCampeonatos(formValue).subscribe({
-      next: retorno => (retorno.campeonato),
-      error: erro => (console.error(erro)),
-    });
+    if(formValue.data_inicio_campeonato > formValue.data_final_campeonato) {
+      this.toast.error({detail: 'Data de inicio não pode ser maior que data final' , duration: 8000});
+      this.dialogRef.close(formValue);
+    } else {
 
-    this.form_campeonato.reset(this.setFormCampeonato(formValue));
+      this.campeonatoService.postCampeonatos(formValue).subscribe({
+        next: retorno => (retorno.campeonato),
+        error: erro => (console.error(erro)),
+      });
 
-    this.toast.success({detail: 'Campeonato cadastrado com Sucesso!' , duration: 8000});
+      this.form_campeonato.reset(this.setFormCampeonato(formValue));
 
-    this.dialogRef.close(formValue);
+      this.toast.success({detail: 'Campeonato cadastrado com Sucesso!' , duration: 8000});
+
+      this.dialogRef.close(formValue);
+    }
+
   }
 
   listaTipoCampeonatos() {

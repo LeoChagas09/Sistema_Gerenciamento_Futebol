@@ -50,6 +50,7 @@ export class ListarTimesComponent implements OnInit {
     private authService: AuthService,
     private toast: NgToastService,
     private timesService: TimesService,
+    private campeonatoService: CampeonatoService,
     private route: ActivatedRoute,
     private excelService: ExporterService,
   ) { }
@@ -69,6 +70,10 @@ export class ListarTimesComponent implements OnInit {
 
   Salvar(id: number) {
     this.timesService.setTimesSelecionados(this.timesSelecionados);
+    this.campeonatoService.updateCampeonatos(id).subscribe({
+      next: retorno => (retorno),
+      error: erro => (console.error(erro)),
+    });
     this.router.navigate([`/jogosSorteio/campeonato/${this.id}`]);
   }
 

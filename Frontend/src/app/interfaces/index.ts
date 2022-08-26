@@ -5,6 +5,8 @@ export interface Campeonato {
   nome_campeonato: string,
   data_inicio_campeonato: string,
   data_final_campeonato: string,
+  status_jogo: boolean,
+  status_times: boolean,
 }
 
 export interface CampeonatoTeste {

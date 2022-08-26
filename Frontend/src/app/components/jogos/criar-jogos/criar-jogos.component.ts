@@ -43,18 +43,22 @@ export class CriarJogosComponent implements OnInit {
     formValue.id_time_1_fk = this.data.id_time_1;
     formValue.id_time_2_fk = this.data.id_time_2;
 
-    console.log(formValue);
+    if(formValue.data_ida > formValue.data_volta){
+      this.toast.error({detail: 'Data de inicio não pode ser maior que data final' , duration: 8000});
+    } else {
 
-    this.jogosService.postJogos(formValue).subscribe({
-      next: retorno => (retorno.jogo),
-      error: erro => (console.error(erro)),
-    });
+      this.jogosService.postJogos(formValue).subscribe({
+        next: retorno => (retorno.jogo),
+        error: erro => (console.error(erro)),
+      });
 
-    this.form_jogo.reset(this.setFormJogo(formValue));
+      this.form_jogo.reset(this.setFormJogo(formValue));
 
-    this.toast.success({detail: 'Jogo cadastrado com Sucesso!' , duration: 8000});
+      this.toast.success({detail: 'Jogo cadastrado com Sucesso!' , duration: 8000});
 
-    this.dialogRef.close(formValue);
+      this.dialogRef.close(formValue);
+    }
+
   }
 
   get f() {

@@ -1,3 +1,18 @@
+.demo-table {
+  width: 60%;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 2px solid transparent;
+  border-top: 2px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+
 .container {
   display: flex;
   flex-direction: column;
@@ -29,7 +44,6 @@
   margin: 0 auto;
   justify-content: center;
   padding-top: 20px;
-  width: 100%;
   margin-bottom: 6.89rem;
 }
 
@@ -37,8 +51,11 @@
   text-align: center;
 }
 
-.mat-elevation-z8 {
-  width: 60rem;
+.center {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
 }
 
 .salvar {
