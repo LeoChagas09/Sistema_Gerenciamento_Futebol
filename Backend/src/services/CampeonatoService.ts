@@ -44,6 +44,16 @@ export class CampeonatoService {
     return campeonato;
   }
 
+  async findById(id: number) {
+    const campeonato = await prisma.campeonato.findFirst({
+      where: {
+        id_campeonato: id,
+      }
+    });
+
+    return campeonato;
+  }
+
   async findByUser(id: number) {
     const campeonato = await prisma.campeonato.findMany({
       include: {

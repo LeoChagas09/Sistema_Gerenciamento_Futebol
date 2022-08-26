@@ -8,6 +8,8 @@ CampeonatoRoutes.post('/cadastrar', campeonatoController.create);
 
 CampeonatoRoutes.get('/', campeonatoController.find);
 
+CampeonatoRoutes.get('/:id', campeonatoController.findById);
+
 CampeonatoRoutes.get('/user/:id', campeonatoController.findByUser);
 
 CampeonatoRoutes.get('/times/:id', campeonatoController.updateStatusTime);

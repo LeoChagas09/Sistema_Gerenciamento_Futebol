@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { Jogo, jogoResultado, Jogos, jogosResultado } from 'src/app/interfaces';
 import { environment } from 'src/environments/environment';
 
+
+
+
+
 @Injectable()
 export class JogosService {
 
@@ -21,9 +25,9 @@ export class JogosService {
     return this.http.post<Jogos>(url, jogos);
   }
 
-  postJogoResultado(jogoResultado: jogoResultado): Observable<jogosResultado> {
-    const url = `${this.baseUrl}/jogoResultado/`
-    return this.http.post<jogosResultado>(url, jogoResultado);
+  updateJogoResultado(id: number, updatejogoResultado: jogoResultado) {
+    const url = `${this.baseUrl}/jogoResultado/atualizar/${id}`
+    return this.http.put<jogosResultado>(url, updatejogoResultado);
   }
 
   getJogoResultado(): Observable<jogoResultado[]> {

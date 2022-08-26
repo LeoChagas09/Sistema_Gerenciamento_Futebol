@@ -58,7 +58,6 @@ export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
         error: erro => (console.error(erro)),
       }),
     );
-    console.log(this.dataSource);
   }
 
   filtrar(event: Event) {
@@ -77,12 +76,13 @@ export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   criarResultado(id_jogo: number): void {
+
     const idJogo = id_jogo;
 
     const dialog = this.dialog.open(CriarResultadoJogoComponent, {
       disableClose: true,
       width: '600px',
-      data: {idJogo: idJogo}
+      data: {idJogo: idJogo},
     });
     dialog.afterClosed().subscribe(result => {
       if(!result.error) {
@@ -90,5 +90,6 @@ export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     })
   }
+
 
 }

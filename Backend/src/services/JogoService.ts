@@ -12,7 +12,7 @@ export class JogoService {
     local_volta: string,
     ){
 
-      if(data_volta > data_ida) {
+      if(data_volta >= data_ida) {
 
         const jogos = await prisma.jogo.create({
           data: {
@@ -26,8 +26,18 @@ export class JogoService {
           },
         });
 
-        return jogos;
+        const jogoResultado = await prisma.jogo_resultado.create({
+          data: {
+            id_jogo_fk: jogos.id_jogo,
+            placar_time_1: 0,
+            placar_time_2: 0,
+          },
+        });
+
+        return jogos || jogoResultado;
       }
+
+
   }
 
   async find() {

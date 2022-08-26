@@ -3,7 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { Jogo } from 'src/app/interfaces';
+import { Subscription } from 'rxjs';
+import { Campeonato, Jogo } from 'src/app/interfaces';
+import { CampeonatoService } from 'src/app/services/campeonato/campeonato.service';
 import { JogosService } from 'src/app/services/jogo/jogos.service';
 
 @Component({
@@ -20,11 +22,18 @@ export class CriarJogosComponent implements OnInit {
     data_volta: new FormControl('', [Validators.required]),
   });
 
+  subscriptions: Subscription = new Subscription();
+
+  campeonato: any;
+
   id: any;
+
+  dataInicio: any;
 
   constructor(
     private dialogRef: MatDialogRef<CriarJogosComponent>,
     public jogosService: JogosService,
+    public campeonatoService: CampeonatoService,
     private router: Router,
     private fb: FormBuilder,
     private toast: NgToastService,
@@ -33,7 +42,24 @@ export class CriarJogosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listarCampeonatos();
+
+    console.log(this.campeonato);
+
+    this.listarCampeonatos();
+
+    console.log(this.campeonato);
   }
+
+  async listarCampeonatos() {
+    await this.campeonatoService.getCampeonatosId(this.data.idCampeonato).subscribe(
+      retorno =>  {
+        this.campeonato = retorno;
+        console.log(this.campeonato);
+      }
+    )
+  }
+
 
   criarJogo(): void {
 
@@ -43,21 +69,30 @@ export class CriarJogosComponent implements OnInit {
     formValue.id_time_1_fk = this.data.id_time_1;
     formValue.id_time_2_fk = this.data.id_time_2;
 
-    if(formValue.data_ida > formValue.data_volta){
-      this.toast.error({detail: 'Data de inicio não pode ser maior que data final' , duration: 8000});
-    } else {
+    this.campeonatoService.getCampeonatosId(this.data.idCampeonato).subscribe(
+      retorno =>  {
 
-      this.jogosService.postJogos(formValue).subscribe({
-        next: retorno => (retorno.jogo),
-        error: erro => (console.error(erro)),
-      });
+        if(formValue.data_ida >= retorno.data_inicio_campeonato || formValue.data_volta <= retorno.data_final_campeonato){
 
-      this.form_jogo.reset(this.setFormJogo(formValue));
+            if(formValue.data_ida > formValue.data_volta ){
+              this.toast.error({detail: 'Data de inicio não pode ser maior que data final' , duration: 8000});
+            } else {
+              this.jogosService.postJogos(formValue).subscribe({
+                next: retorno => (retorno.jogo),
+                error: erro => (console.error(erro)),
+              });
 
-      this.toast.success({detail: 'Jogo cadastrado com Sucesso!' , duration: 8000});
+              this.form_jogo.reset(this.setFormJogo(formValue));
 
-      this.dialogRef.close(formValue);
-    }
+              this.toast.success({detail: 'Jogo cadastrado com Sucesso!' , duration: 8000});
+
+              this.dialogRef.close(formValue);
+            }
+          } else {
+          this.toast.error({detail: 'if1' , duration: 8000});
+        }
+      }
+    )
 
   }
 

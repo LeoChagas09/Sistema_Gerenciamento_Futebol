@@ -49,6 +49,23 @@ export class CampeonatoController {
     }
   }
 
+  async findById(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+
+      const service = new CampeonatoService();
+
+      const campeonato = await service.findById(Number(id));
+
+      res.json(campeonato);
+
+    } catch (error) {
+       return res
+      .status(400)
+      .json(erroHandling(1, 'Erro ao buscar os campeonatos'));
+    }
+  }
+
   async findByUser(req: Request, res: Response) {
     try {
       const { id } = req.params;

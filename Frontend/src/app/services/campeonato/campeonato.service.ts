@@ -19,6 +19,11 @@ export class CampeonatoService {
     return this.http.get<Campeonato[]>(url)
   }
 
+  getCampeonatosId(id:number):Observable<Campeonato>{
+    const url = `${this.baseUrl}/campeonato/${id}`
+    return this.http.get<Campeonato>(url)
+  }
+
   getCampeonatosUser(id: number):Observable<Campeonato[]>{
     const url = `${this.baseUrl}/campeonato/user/${id}`
     return this.http.get<Campeonato[]>(url)

@@ -53,13 +53,16 @@ export class JogoController {
     }
   }
 
-  async createJogoResultado(req: Request, res: Response){
+  async updateJogoResultado(req: Request, res: Response){
     try {
-      const { id_jogo_fk, placar_time_1, placar_time_2 } = req.body;
+      const {id}  = req.params;
+
+
+      const { placar_time_1, placar_time_2 } = req.body;
 
       const service = new JogoService();
 
-      const jogoResultado = service.updateJogoResultado(id_jogo_fk, placar_time_1, placar_time_2);
+      const jogoResultado = service.updateJogoResultado(Number(id), placar_time_1, placar_time_2);
 
       res.json(jogoResultado);
     } catch (error) {

@@ -32,8 +32,9 @@ export class CriarResultadoJogoComponent implements OnInit {
     const formValue : jogoResultado = this.form_resultado_jogo.getRawValue();
 
     formValue.id_jogo_fk = this.data.idJogo;
+    const id = formValue.id_jogo_fk;
 
-    this.jogosService.postJogoResultado(formValue).subscribe({
+    this.jogosService.updateJogoResultado(id, formValue).subscribe({
       next: retorno => (retorno.jogoResultado),
       error: erro => (console.error(erro)),
     });
