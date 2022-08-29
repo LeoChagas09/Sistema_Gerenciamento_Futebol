@@ -10,6 +10,7 @@ export class JogoService {
     local_ida: string,
     data_volta: Date,
     local_volta: string,
+    status_jogo: boolean,
     ){
 
       if(data_volta >= data_ida) {
@@ -23,6 +24,7 @@ export class JogoService {
             local_ida,
             data_volta: new Date(data_volta),
             local_volta,
+            status_jogo: status_jogo,
           },
         });
 
@@ -64,6 +66,20 @@ export class JogoService {
       where: {
         id_campeonato_fk: id
       },
+    });
+
+    return jogo;
+  }
+
+  async updateStatusJogo(id: number) {
+
+    const jogo = await prisma.jogo.update({
+      where: {
+        id_jogo: id
+      },
+      data: {
+        status_jogo: true,
+      }
     });
 
     return jogo;

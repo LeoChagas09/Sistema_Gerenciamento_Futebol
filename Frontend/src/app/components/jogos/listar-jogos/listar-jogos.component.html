@@ -77,8 +77,23 @@
       <ng-container matColumnDef="resultado">
         <th  mat-header-cell *matHeaderCellDef class="botao"> Definir Resultado</th>
         <td  mat-cell *matCellDef="let element" class="botao">
-          <button class="button" mat-mini-fab color="warn" (click)="criarResultado(element.id_jogo)" matTooltip="Definir Resultado">
+          <button class="button" mat-mini-fab color="warn" *ngIf="!element.status_jogo" (click)="criarResultado(element.id_jogo, element.time_1.nome_time, element.time_2.nome_time)" matTooltip="Definir Resultado">
             <mat-icon>add_to_queue</mat-icon>
+          </button>
+          <button class="button" mat-mini-fab color="warn" *ngIf="element.status_jogo" disabled matTooltip="Definir Resultado">
+            <mat-icon>add_to_queue</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th  mat-header-cell *matHeaderCellDef class="botao"> </th>
+        <td  mat-cell *matCellDef="let element" class="botao">
+          <button class="button" mat-mini-fab color="warn" *ngIf="!element.status_jogo" (click)="atualizarStatus(element.id_jogo)" matTooltip="Atualizar Status da Partida">
+            <mat-icon>check</mat-icon>
+          </button>
+          <button class="button" mat-mini-fab color="warn" *ngIf="element.status_jogo" disabled  matTooltip="Atualizar Status">
+            <mat-icon>check</mat-icon>
           </button>
         </td>
       </ng-container>

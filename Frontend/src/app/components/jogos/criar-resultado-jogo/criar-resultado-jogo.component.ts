@@ -17,6 +17,9 @@ export class CriarResultadoJogoComponent implements OnInit {
     placar_time_2: new FormControl('', [Validators.required]),
   });
 
+  nome_time_1: any = this.data.nome_time_1;
+  nome_time_2: any = this.data.nome_time_2;
+
   constructor(
     private dialogRef: MatDialogRef<CriarResultadoJogoComponent>,
     private jogosService: JogosService,

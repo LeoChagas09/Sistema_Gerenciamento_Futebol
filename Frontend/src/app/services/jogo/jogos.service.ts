@@ -35,4 +35,9 @@ export class JogosService {
     return this.http.get<jogoResultado[]>(url);
   }
 
+  updateStatusJogo(id: number) {
+    const url = `${this.baseUrl}/jogo/atualizar/${id}`
+    return this.http.get(url);
+  }
+
 }

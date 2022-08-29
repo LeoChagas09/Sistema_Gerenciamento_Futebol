@@ -3,11 +3,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Subscription } from 'rxjs';
 import { Jogo, jogoResultado } from 'src/app/interfaces';
 import { ExporterService } from 'src/app/services/Export/exporter.service';
 import { JogosService } from 'src/app/services/jogo/jogos.service';
 import * as XLSX from 'xlsx';
+import { AtualizarStatusJogoComponent } from '../atualizar-status-jogo/atualizar-status-jogo.component';
 import { CriarResultadoJogoComponent } from '../criar-resultado-jogo/criar-resultado-jogo.component';
 
 @Component({
@@ -17,7 +19,7 @@ import { CriarResultadoJogoComponent } from '../criar-resultado-jogo/criar-resul
 })
 export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  displayedColumns: string[] = ['time1', 'placarTime1', 'placarTime2', 'time2', 'data_ida', 'local_ida', 'data_volta' , 'local_volta', 'resultado'];
+  displayedColumns: string[] = ['time1', 'placarTime1', 'placarTime2', 'time2', 'data_ida', 'local_ida', 'data_volta' , 'local_volta', 'resultado', 'status'];
   dataSource = new MatTableDataSource<Jogo>();
 
   @ViewChild('TABLE', { read: ElementRef }) table!: ElementRef;
@@ -39,6 +41,7 @@ export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
     private excelService: ExporterService,
     public dialog: MatDialog,
     private route: ActivatedRoute,
+    private toast: NgToastService,
   ) { }
 
   ngOnInit(): void {
@@ -75,11 +78,33 @@ export class ListarJogosComponent implements OnInit, OnDestroy, AfterViewInit {
     XLSX.writeFile(wb, 'Jogos.xlsx');
   }
 
-  criarResultado(id_jogo: number): void {
+  criarResultado(id_jogo: number, time1: string, time2: string): void {
+
+    const idJogo = id_jogo;
+    const nome_time_1 = time1;
+    const nome_time_2 = time2;
+
+    const dialog = this.dialog.open(CriarResultadoJogoComponent, {
+      disableClose: true,
+      width: '600px',
+      data: {
+        idJogo: idJogo,
+        nome_time_1: nome_time_1,
+        nome_time_2: nome_time_2
+      },
+    });
+    dialog.afterClosed().subscribe(result => {
+      if(!result.error) {
+        this.listaJogos();
+      }
+    })
+  }
+
+  atualizarStatus(id_jogo: number) {
 
     const idJogo = id_jogo;
 
-    const dialog = this.dialog.open(CriarResultadoJogoComponent, {
+    const dialog = this.dialog.open(AtualizarStatusJogoComponent, {
       disableClose: true,
       width: '600px',
       data: {idJogo: idJogo},

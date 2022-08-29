@@ -75,7 +75,7 @@ export class CriarJogosComponent implements OnInit {
         if(formValue.data_ida >= retorno.data_inicio_campeonato || formValue.data_volta <= retorno.data_final_campeonato){
 
             if(formValue.data_ida > formValue.data_volta ){
-              this.toast.error({detail: 'Data de inicio não pode ser maior que data final' , duration: 8000});
+              this.toast.error({detail: 'Data Invalidas!' , duration: 8000});
             } else {
               this.jogosService.postJogos(formValue).subscribe({
                 next: retorno => (retorno.jogo),
@@ -89,7 +89,7 @@ export class CriarJogosComponent implements OnInit {
               this.dialogRef.close(formValue);
             }
           } else {
-          this.toast.error({detail: 'if1' , duration: 8000});
+          this.toast.error({detail: 'Datas Invalidas!' , duration: 8000});
         }
       }
     )

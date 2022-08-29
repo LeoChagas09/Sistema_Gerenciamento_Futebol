@@ -38,6 +38,7 @@ model jogo {
   local_ida        String           @db.VarChar(200)
   data_volta       DateTime         @db.Date
   local_volta      String           @db.VarChar(200)
+  status_jogo      Boolean
   campeonato       campeonato       @relation(fields: [id_campeonato_fk], references: [id_campeonato], onDelete: NoAction, onUpdate: NoAction, map: "id_campeonato_fk")
   time_1           times            @relation("jogo_id_time_1_fk", fields: [id_time_1_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_1_fk")
   time_2           times            @relation("jogo_id_time_2_fk", fields: [id_time_2_fk], references: [id_time], onDelete: NoAction, onUpdate: NoAction, map: "id_time_2_fk")
