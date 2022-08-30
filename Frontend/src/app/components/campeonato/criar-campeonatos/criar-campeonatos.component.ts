@@ -48,7 +48,10 @@ export class CriarCampeonatosComponent implements OnInit {
 
     formValue.id_usuario_fk = this.data.idUser;
 
-    if(formValue.data_inicio_campeonato > formValue.data_final_campeonato) {
+    if(formValue.id_tipo_fk === 2) {
+      this.toast.error({detail: 'Pontos corridos não pode ser cadastrado!' , duration: 8000});
+      this.dialogRef.close(formValue);
+    } else if (formValue.data_inicio_campeonato > formValue.data_final_campeonato) {
       this.toast.error({detail: 'Data de inicio não pode ser maior que data final' , duration: 8000});
       this.dialogRef.close(formValue);
     } else {
